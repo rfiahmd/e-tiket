@@ -1,0 +1,85 @@
+<?php
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PaketController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\WisataController;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+// Route::view('/', 'landing-page/index');
+Route::get('/Admin', function () {
+    return redirect('/dashboard/admin');
+});
+
+Route::get('/Karyawan', function () {
+    return redirect('/dashboard/karyawan');
+});
+
+Route::middleware(['guest'])->group(function () {
+    Route::view('/', 'landing-page/index');
+    Route::middleware(['guest.redirect'])->group(function () {
+        Route::get('/login', [AuthController::class, 'login'])->name('login');
+        Route::post('/login', [AuthController::class, 'login_action']);
+        Route::get('/register', [AuthController::class, 'register'])->name('register');
+        Route::post('/register', [AuthController::class, 'register_action']);
+        Route::get('/verify/{verify_key}', [AuthController::class, 'verify']);
+    });
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/dashboard/superAdmin', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
+    Route::get('/dashboard/karyawan', [DashboardController::class, 'karyawan'])->name('dashboard.karyawan');
+
+    Route::middleware(['UserAkses:Super Admin'])->group(function () {
+        Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
+        Route::get('/kategori_tambah', [KategoriController::class, 'kategori_tambah'])->name('kategori_tambah');
+        Route::get('/kategori_edit', [KategoriController::class, 'kategori_edit'])->name('kategori_edit');
+        
+        Route::get('/paket_wisata', [PaketController::class, 'index'])->name('paket_wisata');
+        Route::get('/paket_tambah', [PaketController::class, 'paket_tambah'])->name('paket_tambah');
+        Route::get('/paket_edit', [PaketController::class, 'paket_edit'])->name('paket_edit');
+
+        Route::get('/operator_admin', [AuthController::class, 'operator_admin'])->name('operator.admin');
+
+        Route::get('/wisata', [WisataController::class, 'index'])->name('wisata');
+        Route::get('/wisata_tambah', [WisataController::class, 'wisata_tambah'])->name('wisata_tambah');
+        Route::get('/wisata_edit', [WisataController::class, 'wisata_edit'])->name('wisata_edit');
+    });
+
+    Route::middleware(['UserAkses:Admin'])->group(function () {
+        Route::get('/paket_wisata', [PaketController::class, 'index'])->name('paket_wisata');
+        Route::get('/paket_tambah', [PaketController::class, 'paket_tambah'])->name('paket_tambah');
+        Route::get('/paket_edit', [PaketController::class, 'paket_edit'])->name('paket_edit');
+
+        Route::get('/operator_karyawan', [AuthController::class, 'operator_karyawan'])->name('operator.karyawan');
+    });
+
+    Route::middleware(['UserAkses:Karyawan'])->group(function () {
+        Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran');
+        Route::get('/pembayaran_detail', [PembayaranController::class, 'pembayaran_detail'])->name('pembayaran_detail');
+
+        Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+
+
+        Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+
+        Route::get('/rekap', [TransaksiController::class, 'rekap'])->name('rekap');
+    });
+});
