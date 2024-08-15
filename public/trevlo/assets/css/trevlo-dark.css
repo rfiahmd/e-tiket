@@ -1,0 +1,339 @@
+:root {
+  --trevlo-primary: #ffffff;
+  --trevlo-primary-rgb: toRGB(#ffffff);
+  --trevlo-white: #2D2330;
+  --trevlo-white-rgb: toRGB(#2D2330);
+}
+
+.why-choose-one,
+.why-choose-one__bg,
+.preloader,
+.main-header__phone-icon::after,
+.topbar-one::after {
+  background-color: var(--trevlo-white, #2D2330);
+}
+
+.testimonials-card:hover .testimonials-card__meta__name,
+.testimonials-card:hover .testimonials-card__meta__designation,
+.benefit-one__counter:hover .benefit-one__counter__icon,
+.about-one__box:hover .about-one__box__icon,
+.counter-box:hover .counter-box__icon,
+.blog-card__title,
+.banner-form__control .bootstrap-select > .dropdown-toggle,
+.search-popup__btn:hover span,
+.main-header__user:hover,
+.main-header__search:hover,
+.topbar-one__social-link:hover,
+.main-menu .main-menu__list > li.current > a,
+.main-menu .main-menu__list > li:hover > a {
+  color: var(--trevlo-white, #2D2330);
+}
+
+.tour-listing__card-camera-btn,
+.tour-listing__card-featured,
+.destination-one__offer .trevlo-btn::before,
+.blog-card__content,
+.banner-form__popup,
+.banner-form__wrapper,
+.main-header__phone-icon,
+.main-header {
+  background-color: var(--trevlo-primary, #ffffff);
+}
+
+.testimonials-card__meta__name,
+.testimonials-card__meta__designation,
+.testimonials-card:hover .testimonials-card__quote,
+.testimonials-card:hover .testimonials-card__ratings,
+.benefit-one__counter__icon,
+.benefit-one__box:hover .benefit-one__box__icon,
+.tour-listing__card:hover .tour-listing__card-price,
+.tour-listing__card:hover .tour-listing__card-people-text,
+.tour-listing__card:hover .tour-listing__card-people span,
+.tour-listing__card:hover .tour-listing__card-day-text,
+.tour-listing__card:hover .tour-listing__card-day span,
+.tour-listing__card:hover .tour-listing__card-location-box span,
+.tour-listing__card:hover .tour-listing__card-location-text,
+.tour-listing__card:hover .tour-listing__card-review-text,
+.tour-listing__card:hover .tour-listing__card-review-box span,
+.tour-listing__card-camera-btn:hover,
+.tour-listing__card-wishlist,
+.tour-listing__card-discount,
+.about-one__content .trevlo-btn:hover,
+.about-one__box__icon,
+.about-one__counter__title,
+.about-one__counter__number,
+.destination-one__offer__title,
+.destination-one__offer__sub-title,
+.destination-one__card-btn,
+.destination-one__card-title,
+.why-choose-one .sec-title__title,
+.why-choose-one__box__title,
+.offer-one__heading,
+.offer-one__top-title,
+.counter-box__icon,
+.blog-card__plus,
+.blog-card__date-number,
+.blog-card__date-month,
+.gallery-single__btn,
+.main-footer__social-link,
+.footer-widget__title,
+.banner-form__popup__slider-wrapper .ui-slider-handle span,
+.main-slider-one__title,
+.main-slider-one__sub-title,
+.search-popup__btn span,
+.main-header__phone-number,
+.main-header__phone-title,
+.main-header__phone:hover .main-header__phone-icon span,
+.main-header__user,
+.main-header__search,
+.topbar-one__social-link,
+.trevlo-btn--white-two:hover,
+.footer-widget--newsletter .trevlo-btn,
+.demo-one__btn {
+  color: var(--trevlo-primary, #ffffff);
+}
+
+.counter-one__container {
+  box-shadow: 0px 16px 60px 0px rgba(0, 0, 0, 0.2);
+}
+
+.testimonials-card,
+.tour-listing__card:hover {
+  box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.2);
+}
+
+.offer-one__text {
+  color: #FFE1E0;
+}
+
+.about-one__content .trevlo-btn,
+.offer-one__btn-box .trevlo-btn {
+  color: var(--trevlo-base);
+}
+
+.destination-one__card-overlay {
+  background: rgba(45, 35, 48, 0.5);
+}
+
+.why-choose-one__box {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.why-choose-one__text {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.offer-one__img-two,
+.banner-form__popup__checkbox li label span:before {
+  border-color: var(--trevlo-primary, #ffffff);
+}
+
+.tour-listing__card-wishlist {
+  background-color: rgba(45, 35, 48, 0.26);
+}
+
+.tour-listing__card-image-overlay {
+  background: rgba(45, 35, 48, 0.7);
+}
+
+.blog-card__overlay,
+.main-slider-one__image::after {
+  background-color: var(--trevlo-white, #2D2330);
+  opacity: 0.6;
+}
+
+.main-slider-one__carousel.owl-carousel .owl-nav .owl-prev,
+.main-slider-one__carousel.owl-carousel .owl-nav .owl-next {
+  border: 2px solid var(--trevlo-primary, #ffffff);
+  color: var(--trevlo-primary, #ffffff);
+  opacity: 0.2;
+}
+
+.main-slider-one__carousel.owl-carousel .owl-nav .owl-prev:hover,
+.main-slider-one__carousel.owl-carousel .owl-nav .owl-next:hover {
+  border: 2px solid var(--trevlo-primary, #ffffff);
+  color: var(--trevlo-primary, #ffffff);
+  opacity: 1;
+}
+
+.banner-form__control input[type=text],
+.banner-form__control input[type=number],
+.banner-form__control input[type=email] {
+  color: var(--trevlo-white, #2D2330);
+}
+.banner-form__control input[type=text]::-moz-placeholder,
+.banner-form__control input[type=number]::-moz-placeholder,
+.banner-form__control input[type=email]::-moz-placeholder {
+  color: var(--trevlo-white, #2D2330);
+  opacity: 1;
+}
+.banner-form__control input[type=text]::-ms-input-placeholder,
+.banner-form__control input[type=number]::-ms-input-placeholder,
+.banner-form__control input[type=email]::-ms-input-placeholder {
+  color: var(--trevlo-white, #2D2330);
+  opacity: 1;
+}
+.banner-form__control input[type=text]::-webkit-input-placeholder,
+.banner-form__control input[type=number]::-webkit-input-placeholder,
+.banner-form__control input[type=email]::-webkit-input-placeholder {
+  color: var(--trevlo-white, #2D2330);
+  opacity: 1;
+}
+
+.banner-form .trevlo-btn {
+  color: var(--trevlo-primary, #ffffff);
+}
+.banner-form .trevlo-btn::after {
+  background-color: var(--trevlo-white, #2D2330);
+}
+
+.banner-form__control .bootstrap-select .dropdown-menu > li > a {
+  background-color: var(--trevlo-primary, #ffffff);
+  color: var(--trevlo-white, #2D2330);
+}
+
+.banner-form__control .bootstrap-select .dropdown-menu > li:hover > a,
+.banner-form__control .bootstrap-select .dropdown-menu > li.selected > a {
+  color: var(--trevlo-primary, #ffffff);
+}
+
+.ui-datepicker.ui-widget-content {
+  border: 1px solid var(--trevlo-white, #2D2330);
+  color: var(--trevlo-white, #2D2330);
+}
+
+.ui-datepicker .ui-datepicker-header {
+  background-color: var(--trevlo-white, #2D2330);
+  color: var(--trevlo-primary, #ffffff);
+}
+
+.ui-datepicker-calendar td {
+  background-color: var(--trevlo-primary, #ffffff);
+  color: var(--trevlo-primary, #ffffff);
+}
+.ui-datepicker-calendar .ui-state-default,
+.ui-datepicker-calendar .ui-widget-content .ui-state-default,
+.ui-datepicker-calendar .ui-widget-header .ui-state-default {
+  color: var(--trevlo-white, #2D2330);
+}
+.ui-datepicker-calendar .ui-state-default:hover,
+.ui-datepicker-calendar .ui-widget-content .ui-state-default:hover,
+.ui-datepicker-calendar .ui-widget-header .ui-state-default:hover {
+  color: var(--trevlo-primary, #ffffff);
+}
+.ui-datepicker-calendar .ui-state-highlight,
+.ui-datepicker-calendar .ui-widget-content .ui-state-highlight,
+.ui-datepicker-calendar .ui-widget-header .ui-state-highlight {
+  color: var(--trevlo-primary, #ffffff);
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+  background-color: var(--trevlo-primary, #ffffff);
+}
+.ui-datepicker .ui-datepicker-prev:hover,
+.ui-datepicker .ui-datepicker-next:hover {
+  color: var(--trevlo-primary, #ffffff);
+}
+
+.daterangepicker .calendar-table thead th,
+.daterangepicker .calendar-table thead th.month {
+  color: var(--trevlo-white);
+}
+
+.daterangepicker .calendar-table .next span,
+.daterangepicker .calendar-table .prev span {
+  border-color: var(--trevlo-white);
+}
+
+.daterangepicker .calendar-table .next:hover span,
+.daterangepicker .calendar-table .prev:hover span {
+  border-color: var(--trevlo-primary);
+}
+
+.daterangepicker .calendar-table td {
+  color: var(--trevlo-white);
+  border-color: var(--trevlo-primary);
+}
+
+.daterangepicker td.off,
+.daterangepicker td.off.in-range,
+.daterangepicker td.off.start-date,
+.daterangepicker td.off.end-date {
+  color: var(--trevlo-secondary);
+}
+
+.daterangepicker td.available:hover,
+.daterangepicker th.available:hover,
+.daterangepicker td.in-range,
+.daterangepicker td.active,
+.daterangepicker td:hover,
+.daterangepicker td.active:hover {
+  background-color: var(--trevlo-base);
+  color: var(--trevlo-primary);
+}
+
+.daterangepicker .drp-buttons .btn {
+  color: var(--trevlo-primary);
+}
+.daterangepicker .drp-buttons .btn.cancelBtn {
+  background-color: var(--trevlo-white);
+}
+.daterangepicker .drp-buttons .btn.cancelBtn:hover {
+  background-color: var(--trevlo-base);
+}
+.daterangepicker .drp-buttons .btn:hover {
+  background-color: var(--trevlo-white);
+}
+
+.client-carousel__title {
+  color: var(--trevlo-gray);
+  border-color: var(--trevlo-black3);
+}
+
+.tour-listing__card-divider,
+.counter-box::after {
+  background-color: var(--trevlo-black3);
+}
+
+.testimonials-card,
+.benefit-one__box__icon,
+.tour-listing__card,
+.about-one__box__text {
+  border-color: var(--trevlo-black3);
+}
+
+.testimonials-card::after {
+  border-color: var(--trevlo-black3) transparent transparent transparent;
+}
+
+.counter-one__bg-box {
+  background-color: #4a3d4e;
+}
+
+.benefit-one__box-wrapper,
+.tour-listing__card-inner-content {
+  background-color: var(--trevlo-black2);
+}
+
+.tour-listing__card-people-text,
+.tour-listing__card-day-text,
+.tour-listing__card-review-text,
+.tour-listing__card-location-text {
+  color: var(--trevlo-gray);
+}
+
+.benefit-one__content .trevlo-btn {
+  color: var(--trevlo-primary);
+}
+.benefit-one__content .trevlo-btn::before {
+  background-color: var(--trevlo-base);
+}
+.benefit-one__content .trevlo-btn::after {
+  background-color: var(--trevlo-primary);
+}
+.benefit-one__content .trevlo-btn:hover {
+  color: var(--trevlo-white);
+}
+/*# sourceMappingURL=trevlo-dark.css.map */

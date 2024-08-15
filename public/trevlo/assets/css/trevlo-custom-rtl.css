@@ -1,0 +1,37 @@
+body {
+  overflow-x: hidden;
+  direction: rtl;
+}
+
+.owl-carousel {
+  direction: ltr;
+}
+
+.owl-carousel .owl-nav,
+.owl-carousel .owl-dots,
+.owl-carousel .owl-item {
+  direction: rtl;
+}
+
+.contact__input-box .bootstrap-select .dropdown-menu,
+.bootstrap-select .dropdown-toggle .filter-option {
+  text-align: right;
+}
+
+.list-unstyled {
+  padding-right: 0;
+}
+
+.bootstrap-select .dropdown-menu.inner {
+  text-align: right;
+}
+
+.main-menu .main-menu__list li ul li > a::after {
+  content: "\f060";
+}
+
+.about-one__image__two svg {
+  left: 40px;
+  right: auto;
+}
+/*# sourceMappingURL=trevlo-custom-rtl.css.map */
