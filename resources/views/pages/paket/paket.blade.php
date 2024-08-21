@@ -1,7 +1,3 @@
-{{-- @php
-    $title = '.. » ..';
-@endphp --}}
-
 @extends('layouts.template')
 
 @section('content')
@@ -37,13 +33,27 @@
         <div class="card">
             <div class="card-body">
                 <div class="col-md-12 project-list">
-                    <div class="row">
-                        <div class="col-md-6" style="margin-top: -0.5rem; margin-left: -1.5rem">
+                    <div class="d-flex gap-2 py-3">
+                        <div class="" style="margin-top: -0.5rem;">
                             <h4>Data Paket Wisata</h4>
                         </div>
-                        <div class="col-md-6" style="margin-top: -0.8rem;">
+                        <div class="ms-auto" style="margin-top: -0.8rem;">
+                            <div class="btn-group">
+                                {{-- Filter --}}
+                                <select class="form-select" id="wisataFilter" aria-label="Default select example">
+                                    <option value="all" {{ request('wisata_filter') == 'all' ? 'selected' : '' }}>Semua</option>
+                                    @foreach ($wisata as $item)
+                                        <option value="{{ $item->wisata_id }}"
+                                            {{ request('wisata_filter') == $item->wisata_id ? 'selected' : '' }}>
+                                            {{ $item->nama_wisata }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="" style="margin-top: -0.8rem;">
                             <div class="form-group mb-0 me-0"></div>
-                            <a style="margin-right: -3rem;" class="btn btn-primary" href="tambah">
+                            <a style="" class="btn btn-primary" href="paket_tambah">
                                 <i data-feather="plus-square"></i>
                                 Tambah Data
                             </a>
@@ -65,34 +75,48 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <strong style="font-size: 16px;">Pantai Lombang</strong>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div style="margin-left: 10px" class="flex-grow-1">
-                                            <h5>Tiket Masuk</h5>
-                                            <a href="product.html">
-                                                <span style="font-size: 12px;">Lihat selengkapnya ...</span>
-                                            </a>
+                            @foreach ($paketWisata as $index => $item)
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>
+                                        <strong style="font-size: 16px;">{{ $item->wisata->nama_wisata }}</strong>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div style="margin-left: 10px" class="flex-grow-1">
+                                                <h5>{{ $item->nama_paket }}</h5>
+                                                <a href="product.html">
+                                                    <span style="font-size: 12px;">Lihat selengkapnya ...</span>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>Rp. 20.000,00</td>
-                                <td>
-                                    <ul class="action d-flex justify-content-center align-items-center mb-0">
-                                        <li class="edit"> <a href="{{ route('paket_edit') }}"><i
-                                                    class="icon-pencil-alt"></i></a></li>
-                                        <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>Rp. {{ number_format($item->harga_paket, 2, ',', '.') }}</td>
+                                    <td>
+                                        <ul class="action d-flex justify-content-center align-items-center mb-0">
+                                            <li class="edit"> <a
+                                                    href="{{ route('paket_edit', ['id' => $item->paket_id]) }}"><i
+                                                        class="icon-pencil-alt"></i></a></li>
+                                            <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+<script>
+    document.getElementById('wisataFilter').addEventListener('change', function() {
+        const selectedValue = this.value;
+        const url = new URL(window.location.href);
+        url.searchParams.set('wisata_filter', selectedValue);
+        window.location.href = url.toString();
+    });
+</script>
 @endsection

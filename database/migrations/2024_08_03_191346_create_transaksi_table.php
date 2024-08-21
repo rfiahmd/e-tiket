@@ -16,7 +16,7 @@ class CreateTransaksiTable extends Migration
             $table->string('notelp_pembeli');
             $table->foreignId('id_paket')->constrained('paket_wisata', 'paket_id')->onDelete('cascade');
             $table->integer('jumlah_paket');
-            $table->decimal('total_harga', 10, 2);
+            $table->decimal('total_harga', 10, 0);
             $table->enum('status_transaksi', ['Sukses', 'Proses', 'Batal']);
             $table->string('qr_kode')->nullable();
             $table->string('sual_token')->nullable();

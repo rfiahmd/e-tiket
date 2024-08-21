@@ -38,7 +38,7 @@
                             </div>
                         </li>
                         <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                            <a class="sidebar-link sidebar-title link-nav" href="/dashboard">
+                            <a class="sidebar-link sidebar-title link-nav" href="/dashboard/superAdmin">
                                 <svg class="stroke-icon">
                                     <use
                                         href="{{ asset('') }}assets/Admin-Mofi/assets/svg/icon-sprite.svg#stroke-home">
@@ -163,7 +163,7 @@
                         </li>
                         <li class="sidebar-list">
                             <i class="fa fa-thumb-tack"></i>
-                            <a class="sidebar-link sidebar-title link-nav" href="//wisata">
+                            <a class="sidebar-link sidebar-title link-nav" href="/wisata">
                                 <svg class="stroke-icon">
                                     <use
                                         href="{{ asset('') }}assets/Admin-Mofi/assets/svg/icon-sprite.svg#stroke-maps">

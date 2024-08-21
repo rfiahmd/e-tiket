@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Mail\AuthMail;
+use App\Models\AdminProfile;
+use App\Models\Kategori;
 use App\Models\User;
+use App\Models\Wisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -67,20 +70,28 @@ class AuthController extends Controller
 
     function register()
     {
-        return view('auth.register');
+        $kategori = Kategori::all();
+        return view('auth.register', compact('kategori'));
     }
 
     function register_action(Request $request)
     {
         $str = Str::random(13);
+
+        // Validasi data yang diterima
         $request->validate([
             'name' => 'required|min:5',
             'email' => 'required|unique:users|email',
             'password' => 'required|min:6',
             'profile' => 'required|image|file',
+            'nama_wisata' => 'required|unique:wisata|nama_wisata',
+            'kategori' => 'required',
+            'gambar_wisata' => 'required|image|file',
+            'alamat' => 'required',
+            'deskripsi' => 'required',
         ], [
             'name.required' => 'Username wajib diisi.',
-            'name.min' => 'name minimal 5 karakter(a-z, A-Z, 0-9).',
+            'name.min' => 'Nama minimal 5 karakter(a-z, A-Z, 0-9).',
             'email.required' => 'Email wajib diisi.',
             'email.unique' => 'Email telah terdaftar.',
             'password.required' => 'Password wajib diisi.',
@@ -88,23 +99,60 @@ class AuthController extends Controller
             'profile.required' => 'Foto Profil wajib diupload.',
             'profile.image' => 'Foto Profil yang diupload harus image.',
             'profile.file' => 'Foto Profil harus berupa file.',
+            'nama_wisata.required' => 'Nama wisata wajib diisi.',
+            'nama_wisata.unique' => 'Nama wisata sudah dipakai.',
+            'kategori.required' => 'Kategori wajib dipilih.',
+            'gambar_wisata.required' => 'Gambar wisata wajib diupload.',
+            'gambar_wisata.image' => 'Gambar wisata yang diupload harus image.',
+            'alamat.required' => 'Alamat lengkap wajib diisi.',
+            'deskripsi.required' => 'Deskripsi wajib diisi.',
         ]);
 
+        // Proses upload foto profil
         $profile_file = $request->file('profile');
         $profile_ekstensi = $profile_file->extension();
         $nama_profile = date('ymdhis') . "." . $profile_ekstensi;
-        $profile_file->move(public_path('pictures/profile'), $nama_profile);
+        $profile_file->move(public_path('pictures/profile/admin'), $nama_profile);
 
+        // Simpan data user
         $infoRegister = [
             'name' => $request->name,
             'email' => $request->email,
+            'plain_password' => $request->password,
             'password' => bcrypt($request->password),
             'profile' => $nama_profile,
             'verify_key' => $str,
         ];
 
-        User::create($infoRegister);
+        $user = User::create($infoRegister);
 
+        // Proses upload gambar wisata
+        $gambar_wisata_file = $request->file('gambar_wisata');
+        $gambar_wisata_ekstensi = $gambar_wisata_file->extension();
+        $nama_gambar_wisata = date('ymdhis') . "_wisata." . $gambar_wisata_ekstensi;
+        $gambar_wisata_file->move(public_path('pictures/wisata'), $nama_gambar_wisata);
+
+        // Simpan data wisata
+        $infoWisata = [
+            'nama_wisata' => $request->nama_wisata,
+            'status' => 'active',
+            'alamat_lengkap' => $request->alamat,
+            'gambar_wisata' => $nama_gambar_wisata,
+            'deskripsi' => $request->deskripsi,
+            'id_kategori' => $request->kategori,
+        ];
+
+        $wisata = Wisata::create($infoWisata);
+
+        // Simpan profil admin dan hubungkan dengan wisata
+        $adminProfile = [
+            'id_user' => $user->id,
+            'id_wisata' => $wisata->wisata_id,
+        ];
+
+        AdminProfile::create($adminProfile);
+
+        // Kirim email verifikasi
         $details = [
             'name' => $infoRegister['name'],
             'role' => 'Admin',
@@ -129,6 +177,24 @@ class AuthController extends Controller
             return redirect()->route('login')->with('success', 'Verifikasi berhasil, Akun anda sudah aktif.');
         } else {
             return redirect()->route('login')->withErrors('Key tidak valid, pastikan telah melakukan register.')->withInput();
+        }
+    }
+
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+
+            $token = Str::random(12);
+
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $token . '.' . $extension;
+
+            $request->file('upload')->move(public_path('pictures/wisata/deskripsi_wisata'), $fileName);
+
+            $url = asset('pictures/wisata/deskripsi_wisata/' . $fileName);
+            return response()->json(['fileName' => $fileName, 'uploaded' => 1, 'url' => $url]);
         }
     }
 
@@ -165,5 +231,10 @@ class AuthController extends Controller
     public function karyawan_edit()
     {
         //    
+    }
+
+    function register2()
+    {
+        return view('auth.register2');
     }
 }

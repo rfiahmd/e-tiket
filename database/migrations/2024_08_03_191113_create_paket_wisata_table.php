@@ -12,7 +12,7 @@ class CreatePaketWisataTable extends Migration
             $table->id('paket_id');
             $table->foreignId('id_wisata')->constrained('wisata', 'wisata_id')->onDelete('cascade');
             $table->string('nama_paket');
-            $table->decimal('harga_paket', 10, 2);
+            $table->decimal('harga_paket', 10, 0);
             $table->text('deskripsi')->nullable();
             $table->timestamps();
         });

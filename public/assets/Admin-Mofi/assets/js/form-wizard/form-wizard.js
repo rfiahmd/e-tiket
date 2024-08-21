@@ -2,21 +2,60 @@
 "use strict";
 var currentTab = 0;
 showTab(currentTab);
+// function showTab(n) {
+//   var x = document.getElementsByClassName("tab");
+//   x[n].style.display = "block";
+  
+//   // Menyembunyikan tombol "Previous" jika berada di tab pertama
+//   if (n == 0) {
+//     document.getElementById("prevBtn").style.display = "none";
+//   } else {
+//     document.getElementById("prevBtn").style.display = "inline";
+//   }
+
+//   var nextBtn = document.getElementById("nextBtn");
+
+//   // Mengubah teks tombol "Next" menjadi "Kirim" dan tipe menjadi submit jika berada di tab terakhir
+//   if (n == x.length - 1) {
+//     nextBtn.innerHTML = "Kirim";
+//     nextBtn.type = "submit";
+//     nextBtn.setAttribute("type", "submit"); // Ensure the type attribute is set correctly
+//   } else {
+//     nextBtn.innerHTML = "Berikutnya";
+//     nextBtn.type = "button";
+//     nextBtn.removeAttribute("type"); // Remove the type attribute if not at the last tab
+//   }
+  
+//   fixStepIndicator(n);
+// }
+
 function showTab(n) {
   var x = document.getElementsByClassName("tab");
   x[n].style.display = "block";
+  
+  // Menyembunyikan tombol "Previous" jika berada di tab pertama
   if (n == 0) {
     document.getElementById("prevBtn").style.display = "none";
   } else {
     document.getElementById("prevBtn").style.display = "inline";
   }
+
+  var nextBtn = document.getElementById("nextBtn");
+  var submitBtn = document.getElementById("submitBtn");
+
+  // Mengubah tombol "Next" menjadi "Submit" jika berada di tab terakhir
   if (n == x.length - 1) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
+    nextBtn.style.display = "none"; // Sembunyikan tombol "Next"
+    submitBtn.style.display = "inline"; // Tampilkan tombol "Submit"
   } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
+    nextBtn.style.display = "inline"; // Tampilkan tombol "Next"
+    submitBtn.style.display = "none"; // Sembunyikan tombol "Submit"
   }
+  
   fixStepIndicator(n);
 }
+
+
 function nextPrev(n) {
   var x = document.getElementsByClassName("tab");
   if (n == 1 && !validateForm()) return false;

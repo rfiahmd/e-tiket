@@ -11,7 +11,7 @@ class CreatePembayaranTable extends Migration
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id('pembayaran_id');
             $table->foreignId('id_transaksi')->constrained('transaksi', 'transaksi_id')->onDelete('cascade');
-            $table->decimal('jumlah_pembayaran', 10, 2);
+            $table->decimal('jumlah_pembayaran', 10, 0);
             $table->string('metode_pembayaran');
             $table->enum('status_pembayaran', ['Sukses', 'Proses', 'Batal']);
             $table->string('bukti_pembayaran')->nullable();

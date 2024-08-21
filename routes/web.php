@@ -35,6 +35,8 @@ Route::middleware(['guest'])->group(function () {
         Route::get('/login', [AuthController::class, 'login'])->name('login');
         Route::post('/login', [AuthController::class, 'login_action']);
         Route::get('/register', [AuthController::class, 'register'])->name('register');
+        Route::get('/register2', [AuthController::class, 'register2'])->name('register2');
+        Route::post('/uploadreg', [AuthController::class, 'upload'])->name('ckeditor.uploadreg');
         Route::post('/register', [AuthController::class, 'register_action']);
         Route::get('/verify/{verify_key}', [AuthController::class, 'verify']);
     });
@@ -49,24 +51,25 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['UserAkses:Super Admin'])->group(function () {
         Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
-        Route::get('/kategori_tambah', [KategoriController::class, 'kategori_tambah'])->name('kategori_tambah');
-        Route::get('/kategori_edit', [KategoriController::class, 'kategori_edit'])->name('kategori_edit');
-        
-        Route::get('/paket_wisata', [PaketController::class, 'index'])->name('paket_wisata');
-        Route::get('/paket_tambah', [PaketController::class, 'paket_tambah'])->name('paket_tambah');
-        Route::get('/paket_edit', [PaketController::class, 'paket_edit'])->name('paket_edit');
+        Route::post('/kategori', [KategoriController::class, 'tambah_action']);
+        Route::post('/kategori/{id}/edit', [KategoriController::class, 'edit_action']);
+        Route::get('/kategori/{id}/hapus', [KategoriController::class, 'hapus_action']);
 
         Route::get('/operator_admin', [AuthController::class, 'operator_admin'])->name('operator.admin');
 
         Route::get('/wisata', [WisataController::class, 'index'])->name('wisata');
         Route::get('/wisata_tambah', [WisataController::class, 'wisata_tambah'])->name('wisata_tambah');
         Route::get('/wisata_edit', [WisataController::class, 'wisata_edit'])->name('wisata_edit');
+        Route::post('/upload', [WisataController::class, 'upload'])->name('ckeditor.upload');
     });
 
     Route::middleware(['UserAkses:Admin'])->group(function () {
         Route::get('/paket_wisata', [PaketController::class, 'index'])->name('paket_wisata');
         Route::get('/paket_tambah', [PaketController::class, 'paket_tambah'])->name('paket_tambah');
-        Route::get('/paket_edit', [PaketController::class, 'paket_edit'])->name('paket_edit');
+        Route::post('/paket_tambah', [PaketController::class, 'tambah_action']);
+        Route::get('/paket_edit/{id}', [PaketController::class, 'paket_edit'])->name('paket_edit');
+        Route::post('/paket_edit/{id}', [PaketController::class, 'edit_action']);
+        Route::post('/uploadpkt', [PaketController::class, 'uploadpkt'])->name('ckeditor.uploadpkt');
 
         Route::get('/operator_karyawan', [AuthController::class, 'operator_karyawan'])->name('operator.karyawan');
     });

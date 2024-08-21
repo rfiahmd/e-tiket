@@ -11,7 +11,7 @@ class CreateWisataTable extends Migration
         Schema::create('wisata', function (Blueprint $table) {
             $table->id('wisata_id');
             $table->string('nama_wisata');
-            $table->string('lokasi')->nullable();
+            $table->enum('status', ['active', 'inactif'])->nullable();
             $table->string('alamat_lengkap');
             $table->string('gambar_wisata');
             $table->text('deskripsi');

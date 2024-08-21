@@ -9,36 +9,56 @@ class KategoriController extends Controller
 {
     public function index()
     {
-        return view('pages.kategori.kategori');
+        $kategori = Kategori::getAllKategori();
+
+        return view('pages.kategori.kategori', ['kategori' => $kategori]);
     }
 
-    public function kategori_tambah()
+    public function tambah_action(Request $request)
     {
-        return view('pages.kategori.kategori_tambah');
+        $request->validate([
+            'nama_kategori' => 'required',
+        ]);
+
+        Kategori::create([
+            'nama_kategori' => $request->input('nama_kategori'),
+        ]);
+
+        return redirect("/kategori")->with('success', 'Kategori berhasil ditambahkan.');
     }
 
-    public function store(Request $request)
+    public function edit_action(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required|string|max:255',
+        ]);
+
+        $kategori = Kategori::find($id);
+
+        if ($kategori) {
+            $kategori->update([
+                'nama_kategori' => $request->input('nama_kategori'),
+            ]);
+            return redirect('/kategori')->with('success', 'Kategori berhasil diedit.');
+        } else {
+            return redirect('/kategori')->with('error', 'Kategori tidak ditemukan.');
+        }
     }
 
-    public function show(Kategori $kategori)
+    public function hapus_action($id)
     {
-        //
-    }
+        $kategori = Kategori::find($id);
 
-    public function kategori_edit(Kategori $kategori)
-    {
-        return view('pages.kategori.kategori_edit');
-    }
+        if (!$kategori) {
+            return redirect('/kategori')->with('error', 'Kategori tidak ditemukan.');
+        }
 
-    public function update(Request $request, Kategori $kategori)
-    {
-        //
-    }
+        if ($kategori->wisatas()->count() > 0) {
+            return redirect('/kategori')->with('error', 'Kategori "' . $kategori->nama_kategori . '" tidak bisa dihapus karena sedang digunakan.');
+        }
 
-    public function destroy(Kategori $kategori)
-    {
-        //
+        $kategori->delete();
+
+        return redirect('/kategori')->with('success', 'Kategori "' . $kategori->nama_kategori . '" berhasil dihapus.');
     }
 }

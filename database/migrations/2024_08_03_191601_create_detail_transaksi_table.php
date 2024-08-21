@@ -12,7 +12,7 @@ class CreateDetailTransaksiTable extends Migration
             $table->id('detail_transaksi_id');
             $table->foreignId('id_transaksi')->constrained('transaksi', 'transaksi_id')->onDelete('cascade');
             $table->foreignId('id_paket')->constrained('paket_wisata', 'paket_id')->onDelete('cascade');
-            $table->decimal('sub_total', 10, 2);
+            $table->decimal('sub_total', 10, 0);
             $table->integer('kwantitas');
             $table->timestamps();
         });

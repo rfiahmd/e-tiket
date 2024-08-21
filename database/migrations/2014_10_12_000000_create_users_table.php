@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('plain_password')->nullable();
             $table->enum('role', ['Super Admin','Admin', 'Karyawan'])->default('Admin');
             $table->string('profile');
             $table->string('verify_key');

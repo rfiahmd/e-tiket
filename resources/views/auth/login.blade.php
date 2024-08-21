@@ -42,6 +42,13 @@
 </head>
 
 <body>
+    <div class="loader-wrapper">
+        <div class="loader loader-1">
+            <div class="loader-outter"></div>
+            <div class="loader-inner"></div>
+            <div class="loader-inner-1"></div>
+        </div>
+    </div>
     <!-- login page start-->
     <div class="container-fluid p-0">
         <div class="row m-0">
@@ -79,19 +86,20 @@
 
                                 <div class="form-group">
                                     <label class="col-form-label">Email Address</label>
-                                    <input name="email" value="{{ old('email') }}" class="form-control" type="email" required=""
-                                        placeholder="Test@gmail.com">
+                                    <input name="email" value="{{ old('email') }}" class="form-control"
+                                        type="email" required="" placeholder="Test@gmail.com">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">Password</label>
                                     <div class="form-input position-relative">
                                         <input class="form-control" type="password" name="password" required=""
                                             placeholder="*********">
+                                        <div class="show-hide"><span class="show"></span></div>
                                     </div>
                                 </div>
                                 <div class="form-group mb-0">
                                     <div class="checkbox p-0">
-                                        <input id="checkbox1" type="checkbox">
+                                        <input id="checkbox1" type="checkbox" required>
                                         <label class="text-muted" for="checkbox1">Remember password</label>
                                     </div><a class="link" href="forget-password.html">Forgot password?</a>
                                     <div class="text-end mt-3">
@@ -99,7 +107,7 @@
                                             in</button>
                                     </div>
                                 </div>
-                                <h6 class="text-muted mt-4 or">Or Sign in with</h6>
+                                {{-- <h6 class="text-muted mt-4 or">Or Sign in with</h6>
                                 <div class="social mt-4">
                                     <div class="btn-showcase"><a class="btn btn-light"
                                             href="https://www.linkedin.com/login" target="_blank"><i
@@ -109,7 +117,7 @@
                                                 data-feather="twitter"></i>twitter</a><a class="btn btn-light"
                                             href="https://www.facebook.com/" target="_blank"><i class="txt-fb"
                                                 data-feather="facebook"></i>facebook</a></div>
-                                </div>
+                                </div> --}}
                                 <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2"
                                         href="{{ route('register') }}">Create Account</a></p>
                             </form>
