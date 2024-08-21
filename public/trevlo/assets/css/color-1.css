@@ -1,0 +1,35 @@
+:root {
+  --trevlo-font: "Inter", sans-serif;
+  --trevlo-font2: "Plus Jakarta Sans", sans-serif;
+  --trevlo-special-font: "Dancing Script", cursive;
+  --trevlo-base: #384BFF;
+  --trevlo-base-rgb: 56, 75, 255;
+  --trevlo-secondary: #565656;
+  --trevlo-secondary-rgb: 86, 86, 86;
+  --trevlo-gray: #767682;
+  --trevlo-gray-rgb: 118, 118, 130;
+  --trevlo-gray2: #7D7F8E;
+  --trevlo-gray2-rgb: 125, 127, 142;
+  --trevlo-gray3: #DEDEDE;
+  --trevlo-gray3-rgb: 222, 222, 222;
+  --trevlo-white2: #F1F6FF;
+  --trevlo-white2-rgb: 241, 246, 255;
+  --trevlo-white3: #F2F2F2;
+  --trevlo-white3-rgb: 242, 242, 242;
+  --trevlo-white4: #F5F5F5;
+  --trevlo-white4-rgb: 245, 245, 245;
+  --trevlo-white5: #F1F6F4;
+  --trevlo-white5-rgb: 241, 246, 244;
+  --trevlo-black: #232323;
+  --trevlo-black-rgb: 35, 35, 35;
+  --trevlo-black2: #101A29;
+  --trevlo-black2-rgb: 16, 26, 41;
+  --trevlo-black3: #000000;
+  --trevlo-black3-rgb: 0, 0, 0;
+  --trevlo-yellow: #FAB123;
+  --trevlo-yellow-rgb: 250, 177, 35;
+  --trevlo-border-color: #DDDDDD;
+  --trevlo-border-color-rgb: 221, 221, 221;
+  --trevlo-body-line-height: 1.75;
+}
+/*# sourceMappingURL=color-1.css.map */

@@ -1,0 +1,234 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon9bc0.eot?d0pbst');
+  src:  url('fonts/icomoon9bc0.eot?d0pbst#iefix') format('embedded-opentype'),
+    url('fonts/icomoon9bc0.ttf?d0pbst') format('truetype'),
+    url('fonts/icomoon9bc0.woff?d0pbst') format('woff'),
+    url('fonts/icomoon9bc0.svg?d0pbst#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-paragliding-5:before {
+  content: "\e944";
+}
+.icon-Group:before {
+  content: "\e943";
+}
+.icon-right-arrow:before {
+  content: "\e93f";
+}
+.icon-left-arrow:before {
+  content: "\e940";
+}
+.icon-up-arrow:before {
+  content: "\e941";
+}
+.icon-down-arrow:before {
+  content: "\e942";
+}
+.icon-plane:before {
+  content: "\e93d";
+}
+.icon-share:before {
+  content: "\e93e";
+}
+.icon-credit-card:before {
+  content: "\e937";
+}
+.icon-discount:before {
+  content: "\e938";
+}
+.icon-parking:before {
+  content: "\e939";
+}
+.icon-reception-bell:before {
+  content: "\e93a";
+}
+.icon-restaurant:before {
+  content: "\e93b";
+}
+.icon-seat:before {
+  content: "\e93c";
+}
+.icon-minus:before {
+  content: "\e935";
+}
+.icon-plus:before {
+  content: "\e936";
+}
+.icon-chat:before {
+  content: "\e933";
+}
+.icon-user:before {
+  content: "\e934";
+}
+.icon-facebook:before {
+  content: "\e900";
+}
+.icon-envelope:before {
+  content: "\e901";
+}
+.icon-search:before {
+  content: "\e902";
+}
+.icon-airplane-1:before {
+  content: "\e903";
+}
+.icon-best-customer-experience-1:before {
+  content: "\e904";
+}
+.icon-Booking:before {
+  content: "\e905";
+}
+.icon-bubble-chat-1:before {
+  content: "\e906";
+}
+.icon-calendar-5:before {
+  content: "\e907";
+}
+.icon-clock-1:before {
+  content: "\e908";
+}
+.icon-deer-silhouette-1:before {
+  content: "\e909";
+}
+.icon-Duration:before {
+  content: "\e90a";
+}
+.icon-filter:before {
+  content: "\e90b";
+}
+.icon-fishing-net-1:before {
+  content: "\e90c";
+}
+.icon-friendly-Guide:before {
+  content: "\e90d";
+}
+.icon-hang-gliding-1:before {
+  content: "\e90e";
+}
+.icon-hang-gliding-3:before {
+  content: "\e90f";
+}
+.icon-happy-Travel:before {
+  content: "\e910";
+}
+.icon-heart:before {
+  content: "\e911";
+}
+.icon-hiking-1:before {
+  content: "\e912";
+}
+.icon-hiking-4:before {
+  content: "\e913";
+}
+.icon-hiking:before {
+  content: "\e914";
+}
+.icon-Linkedin:before {
+  content: "\e915";
+}
+.icon-location-1:before {
+  content: "\e916";
+}
+.icon-low-price:before {
+  content: "\e917";
+}
+.icon-lowest-price-1-1:before {
+  content: "\e918";
+}
+.icon-minus-3:before {
+  content: "\e919";
+}
+.icon-mountain-bike-1:before {
+  content: "\e91a";
+}
+.icon-online-chat-1:before {
+  content: "\e91b";
+}
+.icon-paragliding-1:before {
+  content: "\e91c";
+}
+.icon-phone-1:before {
+  content: "\e91d";
+}
+.icon-photo-camera-1:before {
+  content: "\e91e";
+}
+.icon-location-2:before {
+  content: "\e91f";
+}
+.icon-plus-3:before {
+  content: "\e920";
+}
+.icon-safety-First:before {
+  content: "\e921";
+}
+.icon-safety:before {
+  content: "\e922";
+}
+.icon-satisfied:before {
+  content: "\e923";
+}
+.icon-star:before {
+  content: "\e924";
+}
+.icon-telephone-call-1:before {
+  content: "\e925";
+}
+.icon-tent-1:before {
+  content: "\e926";
+}
+.icon-tent-Fill:before {
+  content: "\e927";
+}
+.icon-ticket-1:before {
+  content: "\e928";
+}
+.icon-tour-guide-2:before {
+  content: "\e929";
+}
+.icon-traveling-1:before {
+  content: "\e92a";
+}
+.icon-twitter:before {
+  content: "\e92b";
+}
+.icon-user-1:before {
+  content: "\e92c";
+}
+.icon-user1:before {
+  content: "\e92d";
+}
+.icon-video-camera-1-1:before {
+  content: "\e92e";
+}
+.icon-wildlife:before {
+  content: "\e92f";
+}
+.icon-windsurfing-2:before {
+  content: "\e930";
+}
+.icon-world-1:before {
+  content: "\e931";
+}
+.icon-youtube:before {
+  content: "\e932";
+}
