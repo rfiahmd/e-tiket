@@ -51,18 +51,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['UserAkses:Super Admin'])->group(function () {
         Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
-<<<<<<< HEAD
         Route::post('/kategori', [KategoriController::class, 'tambah_action']);
         Route::post('/kategori/{id}/edit', [KategoriController::class, 'edit_action']);
         Route::get('/kategori/{id}/hapus', [KategoriController::class, 'hapus_action']);
-=======
-        Route::get('/kategori_tambah', [KategoriController::class, 'kategori_tambah'])->name('kategori_tambah');
-        Route::get('/kategori_edit', [KategoriController::class, 'kategori_edit'])->name('kategori_edit');
-
-        Route::get('/paket_wisata', [PaketController::class, 'index'])->name('paket_wisata');
-        Route::get('/paket_tambah', [PaketController::class, 'paket_tambah'])->name('paket_tambah');
-        Route::get('/paket_edit', [PaketController::class, 'paket_edit'])->name('paket_edit');
->>>>>>> c6afcfbb24e8b546062a2cf7e9cb51e59c25c2d0
 
         Route::get('/operator_admin', [AuthController::class, 'operator_admin'])->name('operator.admin');
 
