@@ -13,10 +13,10 @@ class PaketController extends Controller
     public function index(Request $request)
     {
         // Ambil semua wisata untuk dropdown
-        $wisata = \App\Models\Wisata::all();
+        $wisata = Wisata::all();
 
         // Inisialisasi query
-        $query = \App\Models\PaketWisata::query();
+        $query = PaketWisata::query();
 
         if (auth()->user()->role === 'Admin') {
             // Ambil admin profile yang terkait dengan user yang sedang login
@@ -42,7 +42,6 @@ class PaketController extends Controller
 
         return view('pages.paket.paket', compact('paketWisata', 'wisata'));
     }
-
 
     public function uploadpkt(Request $request)
     {
@@ -137,5 +136,17 @@ class PaketController extends Controller
 
         // Redirect dengan pesan sukses
         return redirect()->route('paket_wisata')->with('success', 'Paket wisata berhasil diperbarui.');
+    }
+
+    public function hapus_action($id)
+    {
+        $paket = PaketWisata::find($id);
+
+        if ($paket) {
+            $paket->delete();
+            return redirect()->route('paket_wisata')->with('success', 'Paket berhasil dihapus.');
+        } else {
+            return redirect()->route('paket_wisata')->with('error', 'Paket tidak ditemukan.');
+        }
     }
 }

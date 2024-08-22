@@ -108,7 +108,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div  class="flex-grow-1">
+                                            <div class="flex-grow-1">
                                                 <h5>{{ $item->nama_paket }}</h5>
                                                 <a type="button" data-bs-toggle="modal"
                                                     data-bs-target="#datail-modal{{ $item->paket_id }}">
@@ -123,7 +123,12 @@
                                             <li class="edit"> <a
                                                     href="{{ route('paket_edit', ['id' => $item->paket_id]) }}"><i
                                                         class="icon-pencil-alt"></i></a></li>
-                                            <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
+                                            <li class="delete">
+                                                <a class="hapus_paket" data-id="{{ $item->paket_id }}"
+                                                    data-nama="{{ $item->nama_paket }}">
+                                                    <i class="icon-trash"></i>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -143,7 +148,8 @@
                                                     <div class="row mb-2">
                                                         <div class="col-2"><strong>Paket</strong></div>
                                                         <div class="col-1">:</div>
-                                                        <div class="col-8" style="margin-left: -15px">{{ $item->nama_paket }}</div>
+                                                        <div class="col-8" style="margin-left: -15px">
+                                                            {{ $item->nama_paket }}</div>
                                                     </div>
                                                     <div class="row mb-2">
                                                         <div class="col-2"><strong>Harga</strong></div>
@@ -154,7 +160,7 @@
                                                     <div class="row mb-2">
                                                         <div class="col-2"><strong>Deskripsi</strong></div>
                                                         <div class="col-1">:</div>
-                                                        <div class="col-8" style="margin-left: -15px">
+                                                        <div class="col-9" style="margin-left: -15px">
                                                             <p style="margin-top: -14px">{!! $item->deskripsi !!}</p>
                                                         </div>
                                                     </div>
@@ -177,6 +183,39 @@
 @endsection
 
 @section('script')
+    <script>
+        document.querySelectorAll('.hapus_paket').forEach(function(button) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault(); // Mencegah aksi default link
+
+                var id = this.getAttribute('data-id');
+                var nama = this.getAttribute('data-nama');
+                var url = "/paket/" + id + "/hapus"; // Sesuaikan dengan route
+
+                Swal.fire({
+                    title: "Apakah Anda Yakin?",
+                    text: "Ingin menghapus Paket '" + nama + "'?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Ya, Hapus!",
+                    cancelButtonText: "Tidak, Batal!",
+                    reverseButtons: true
+                }).then(function(result) {
+                    if (result.value) {
+                        // Mengarahkan ke URL penghapusan
+                        window.location.href = url;
+                    } else if (result.dismiss === "cancel") {
+                        Swal.fire(
+                            "Batal",
+                            "Anda Membatalkan Penghapusan",
+                            "error"
+                        );
+                    }
+                });
+            });
+        });
+    </script>
+
     <script>
         document.getElementById('wisataFilter').addEventListener('change', function() {
             const selectedValue = this.value;

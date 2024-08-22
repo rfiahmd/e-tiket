@@ -331,6 +331,22 @@
                                 <span>Transaksi</span>
                             </a>
                         </li>
+                        <li class="sidebar-list">
+                            <i class="fa fa-thumb-tack"></i>
+                            <a class="sidebar-link sidebar-title link-nav" href="/wisata">
+                                <svg class="stroke-icon">
+                                    <use
+                                        href="{{ asset('') }}assets/Admin-Mofi/assets/svg/icon-sprite.svg#stroke-maps">
+                                    </use>
+                                </svg>
+                                <svg class="fill-icon">
+                                    <use
+                                        href="{{ asset('') }}assets/Admin-Mofi/assets/svg/icon-sprite.svg#fill-maps">
+                                    </use>
+                                </svg>
+                                <span>Wisata</span>
+                            </a>
+                        </li>
                         <li class="sidebar-main-title">
                             <div>
                                 <h6>User</h6>

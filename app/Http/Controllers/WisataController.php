@@ -12,8 +12,28 @@ class WisataController extends Controller
 {
     public function index()
     {
-        return view('pages.wisata.wisata');
+        // Inisialisasi query
+        $query = Wisata::query();
+
+        // Ambil data profil admin jika pengguna adalah Admin
+        $adminProfile = null;
+        if (auth()->user()->role === 'Admin') {
+            // Ambil admin profile yang terkait dengan user yang sedang login
+            $adminProfile = \App\Models\AdminProfile::where('id_user', auth()->user()->id)->first();
+
+            // Jika admin profile ditemukan, filter wisata berdasarkan id_wisata
+            if ($adminProfile) {
+                $query->where('wisata_id', $adminProfile->id_wisata);
+            }
+        }
+
+        // Ambil data wisata
+        $wisata = $query->get();
+
+        // Kirim data ke view
+        return view('pages.wisata.wisata', compact('wisata', 'adminProfile'));
     }
+
 
     public function upload(Request $request)
     {
@@ -32,6 +52,4 @@ class WisataController extends Controller
             return response()->json(['fileName' => $fileName, 'uploaded' => 1, 'url' => $url]);
         }
     }
-
-    
 }

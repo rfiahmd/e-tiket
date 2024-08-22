@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 use function Laravel\Prompts\password;
 
@@ -74,7 +75,7 @@ class AuthController extends Controller
         return view('auth.register', compact('kategori'));
     }
 
-    function register_action(Request $request)
+    public function register_action(Request $request)
     {
         $str = Str::random(13);
 
@@ -108,62 +109,72 @@ class AuthController extends Controller
             'deskripsi.required' => 'Deskripsi wajib diisi.',
         ]);
 
-        // Proses upload foto profil
-        $profile_file = $request->file('profile');
-        $profile_ekstensi = $profile_file->extension();
-        $nama_profile = date('ymdhis') . "." . $profile_ekstensi;
-        $profile_file->move(public_path('pictures/profile/admin'), $nama_profile);
+        DB::beginTransaction();
 
-        // Simpan data user
-        $infoRegister = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'plain_password' => $request->password,
-            'password' => bcrypt($request->password),
-            'profile' => $nama_profile,
-            'verify_key' => $str,
-        ];
+        try {
+            // Proses upload foto profil
+            $profile_file = $request->file('profile');
+            $profile_ekstensi = $profile_file->extension();
+            $nama_profile = date('ymdhis') . "." . $profile_ekstensi;
+            $profile_file->move(public_path('pictures/profile/admin'), $nama_profile);
 
-        $user = User::create($infoRegister);
+            // Simpan data user
+            $infoRegister = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'plain_password' => $request->password,
+                'password' => bcrypt($request->password),
+                'profile' => $nama_profile,
+                'verify_key' => $str,
+            ];
 
-        // Proses upload gambar wisata
-        $gambar_wisata_file = $request->file('gambar_wisata');
-        $gambar_wisata_ekstensi = $gambar_wisata_file->extension();
-        $nama_gambar_wisata = date('ymdhis') . "_wisata." . $gambar_wisata_ekstensi;
-        $gambar_wisata_file->move(public_path('pictures/wisata'), $nama_gambar_wisata);
+            $user = User::create($infoRegister);
 
-        // Simpan data wisata
-        $infoWisata = [
-            'nama_wisata' => $request->nama_wisata,
-            'status' => 'inactive',
-            'alamat_lengkap' => $request->alamat,
-            'gambar_wisata' => $nama_gambar_wisata,
-            'deskripsi' => $request->deskripsi,
-            'id_kategori' => $request->kategori,
-        ];
+            // Proses upload gambar wisata
+            $gambar_wisata_file = $request->file('gambar_wisata');
+            $gambar_wisata_ekstensi = $gambar_wisata_file->extension();
+            $nama_gambar_wisata = date('ymdhis') . "_wisata." . $gambar_wisata_ekstensi;
+            $gambar_wisata_file->move(public_path('pictures/wisata'), $nama_gambar_wisata);
 
-        $wisata = Wisata::create($infoWisata);
+            // Simpan data wisata
+            $infoWisata = [
+                'nama_wisata' => $request->nama_wisata,
+                'status' => 'inactive',
+                'alamat_lengkap' => $request->alamat,
+                'gambar_wisata' => $nama_gambar_wisata,
+                'deskripsi' => $request->deskripsi,
+                'id_kategori' => $request->kategori,
+            ];
 
-        // Simpan profil admin dan hubungkan dengan wisata
-        $adminProfile = [
-            'id_user' => $user->id,
-            'id_wisata' => $wisata->wisata_id,
-        ];
+            $wisata = Wisata::create($infoWisata);
 
-        AdminProfile::create($adminProfile);
+            // Simpan profil admin dan hubungkan dengan wisata
+            $adminProfile = [
+                'id_user' => $user->id,
+                'id_wisata' => $wisata->wisata_id,
+            ];
 
-        // Kirim email verifikasi
-        $details = [
-            'name' => $infoRegister['name'],
-            'role' => 'Admin',
-            'datetime' => date('Y-m-d H:i:s'),
-            'website' => 'Verifikasi pendaftaran Wisata di Website Kami!',
-            'url' => 'http://' . request()->getHttpHost() . '/' . 'verify/' . $infoRegister['verify_key'],
-        ];
+            AdminProfile::create($adminProfile);
 
-        Mail::to($infoRegister['email'])->send(new AuthMail($details));
+            // Kirim email verifikasi
+            $details = [
+                'name' => $infoRegister['name'],
+                'role' => 'Admin',
+                'datetime' => date('Y-m-d H:i:s'),
+                'website' => 'Verifikasi pendaftaran Wisata di Website Kami!',
+                'url' => 'http://' . request()->getHttpHost() . '/' . 'verify/' . $infoRegister['verify_key'],
+            ];
 
-        return redirect()->route('login')->with('success', 'Link verifikasi telah dikirim ke email anda. Silahkan cek untuk melakukan verifikasi.');
+            Mail::to($infoRegister['email'])->send(new AuthMail($details));
+
+            DB::commit();
+
+            return redirect()->route('login')->with('success', 'Link verifikasi telah dikirim ke email anda. Silahkan cek untuk melakukan verifikasi.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            // Tangani kesalahan
+            return redirect()->back()->withErrors('Terjadi kesalahan saat mendaftar. Silakan coba lagi.');
+        }
     }
 
     function verify($verify_key)

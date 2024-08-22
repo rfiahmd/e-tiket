@@ -69,12 +69,15 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/paket_tambah', [PaketController::class, 'tambah_action']);
         Route::get('/paket_edit/{id}', [PaketController::class, 'paket_edit'])->name('paket_edit');
         Route::post('/paket_edit/{id}', [PaketController::class, 'edit_action']);
+        Route::get('/paket/{id}/hapus', [PaketController::class, 'hapus_action']);
         Route::post('/uploadpkt', [PaketController::class, 'uploadpkt'])->name('ckeditor.uploadpkt');
 
         Route::get('/operator_karyawan', [AuthController::class, 'operator_karyawan'])->name('operator.karyawan');
     });
 
     Route::middleware(['UserAkses:Karyawan'])->group(function () {
+        Route::get('/wisata', [WisataController::class, 'index'])->name('wisata');
+
         Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran');
         Route::get('/pembayaran_detail', [PembayaranController::class, 'pembayaran_detail'])->name('pembayaran_detail');
 
