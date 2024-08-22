@@ -37,6 +37,24 @@
         </div>
     @endif
 
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="card-body common-flex common-toasts">
+                <div class="toast-container position-fixed bottom-0 end-0 p-3 toast-index toast-rtl">
+                    <div class="toast" id="liveToast4" role="alert" aria-live="polite" aria-atomic="true">
+                        <div class="d-flex justify-content-between align-items-center alert-light-danger">
+                            <div class="toast-body">
+                                <i class="close-search stroke-danger" data-feather="x-circle"></i>
+                                {{ $error }}
+                            </div>
+                            <button class="btn-close" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    @endif
+
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">

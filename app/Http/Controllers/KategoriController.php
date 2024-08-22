@@ -16,15 +16,21 @@ class KategoriController extends Controller
 
     public function tambah_action(Request $request)
     {
-        $request->validate([
-            'nama_kategori' => 'required',
-        ]);
+        $request->validate(
+            [
+                'nama_kategori' => 'required|unique:kategori,nama_kategori',
+            ],
+            [
+                'nama_kategori.required' => 'Nama Kategori wajib diisi.',
+                'nama_kategori.unique' => 'Kategori telah terdaftar.',
+            ]
+        );        
 
         Kategori::create([
             'nama_kategori' => $request->input('nama_kategori'),
         ]);
 
-        return redirect("/kategori")->with('success', 'Kategori berhasil ditambahkan.');
+        return redirect()->back()->with('success', 'Kategori berhasil ditambahkan.');
     }
 
     public function edit_action(Request $request, $id)

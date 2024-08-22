@@ -11,7 +11,7 @@ class Wisata extends Model
 
     protected $table = 'wisata';
     protected $primaryKey = 'wisata_id';
-    protected $fillable = ['nama_wisata', 'lokasi', 'alamat_lengkap', 'gambar_wisata', 'deskripsi', 'id_kategori'];
+    protected $fillable = ['nama_wisata', 'status', 'alamat_lengkap', 'gambar_wisata', 'deskripsi', 'id_kategori'];
 
     public function kategori()
     {

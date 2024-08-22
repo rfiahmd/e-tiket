@@ -81,10 +81,10 @@ class AuthController extends Controller
         // Validasi data yang diterima
         $request->validate([
             'name' => 'required|min:5',
-            'email' => 'required|unique:users|email',
+            'email' => 'required|unique:users,email',
             'password' => 'required|min:6',
             'profile' => 'required|image|file',
-            'nama_wisata' => 'required|unique:wisata|nama_wisata',
+            'nama_wisata' => 'required|unique:wisata,nama_wisata',
             'kategori' => 'required',
             'gambar_wisata' => 'required|image|file',
             'alamat' => 'required',
@@ -135,7 +135,7 @@ class AuthController extends Controller
         // Simpan data wisata
         $infoWisata = [
             'nama_wisata' => $request->nama_wisata,
-            'status' => 'active',
+            'status' => 'inactive',
             'alamat_lengkap' => $request->alamat,
             'gambar_wisata' => $nama_gambar_wisata,
             'deskripsi' => $request->deskripsi,
@@ -172,13 +172,51 @@ class AuthController extends Controller
             ->where('verify_key', $verify_key)
             ->exists();
         if ($keyCheck) {
-            $user = User::where('verify_key', $verify_key)
+            User::where('verify_key', $verify_key)
                 ->update(['email_verified_at' => date('Y-m-d H:i:s')]);
+
+            $user = User::where('verify_key', $verify_key)->first();
+            $adminProfile = AdminProfile::where('id_user', $user->id)->first();
+            if ($adminProfile) {
+                Wisata::where('wisata_id', $adminProfile->id_wisata)
+                    ->update(['status' => 'active']);
+            }
             return redirect()->route('login')->with('success', 'Verifikasi berhasil, Akun anda sudah aktif.');
         } else {
             return redirect()->route('login')->withErrors('Key tidak valid, pastikan telah melakukan register.')->withInput();
         }
     }
+
+    // function verify($verify_key)
+    // {
+    //     // Cek apakah verify_key ada di tabel User
+    //     $keyCheck = User::select('verify_key')
+    //         ->where('verify_key', $verify_key)
+    //         ->exists();
+
+    //     if ($keyCheck) {
+    //         // Temukan user berdasarkan verify_key
+    //         $user = User::where('verify_key', $verify_key)->first();
+
+    //         // Perbarui email_verified_at
+    //         $user->update(['email_verified_at' => date('Y-m-d H:i:s')]);
+
+    //         // Ambil admin profile yang terkait dengan user
+    //         $adminProfile = \App\Models\AdminProfile::where('id_user', $user->id)->first();
+
+    //         if ($adminProfile) {
+    //             // Update status wisata menjadi 'active' untuk id_wisata terkait admin
+    //             \App\Models\Wisata::where('wisata_id', $adminProfile->id_wisata)
+    //                 ->update(['status' => 'active']);
+    //         }
+
+    //         // Redirect dengan pesan sukses
+    //         return redirect()->route('login')->with('success', 'Verifikasi berhasil, Akun anda sudah aktif.');
+    //     } else {
+    //         // Redirect dengan pesan error jika key tidak valid
+    //         return redirect()->route('login')->withErrors('Key tidak valid, pastikan telah melakukan register.')->withInput();
+    //     }
+    // }    
 
     public function upload(Request $request)
     {
