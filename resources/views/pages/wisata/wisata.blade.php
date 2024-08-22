@@ -75,7 +75,7 @@
                                 <td>1234567890</td>
                                 <td>
                                     <ul class="action d-flex justify-content-center align-items-center mb-0">
-                                        <li class="edit"> <a href="{{ route('paket_edit') }}"><i
+                                        <li class="edit"> <a href=""><i
                                                     class="icon-pencil-alt"></i></a></li>
                                         <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
                                     </ul>

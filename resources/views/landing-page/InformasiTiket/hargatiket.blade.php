@@ -26,6 +26,7 @@
                 style="display: block"
               >
                 <div class="pricing-page__row row">
+                  @foreach ( $wisata as $item)
                   <div
                     class="col-xl-4 col-lg-4 col-md-6 mt-60 wow animated fadeInUp"
                     data-wow-delay="0.1s"
@@ -36,7 +37,7 @@
                         <div
                           class="pricing-card__image"
                           style="
-                            background-image: url('{{ asset('trevlo') }}/assets/images/pricing/lombang.jpeg');
+                            background-image: url('{{ asset('pictures/wisata/'. $item->gambar_wisata) }}');
                           "
                         ></div>
                         <!-- /.pricing-card__image-inner-content -->
@@ -44,7 +45,7 @@
                       <!-- /.pricing-card__image-bg -->
                       <ul class="pricing-card__list">
                         <li>
-                          <p class="bjir text-center">Pantai Lombang</p>
+                          <p class="bjir text-center">{{ $item->nama_wisata }}</p>
                         </li>
                         <li>
                           <span class='bx bxs-chevron-right'></span>
@@ -58,7 +59,7 @@
                       <!-- /.pricing-card__list -->
                       <div class="pricing-card__btn-box">
                         <a
-                          href="/detailwisata"
+                          href="/detail/{{ $item->wisata_id }}"
                           class="pricing-card__btn trevlo-btn trevlo-btn--base"
                           ><span>Book Now</span></a
                         >
@@ -69,192 +70,11 @@
                     </div>
                     <!-- /.pricing-card -->
                   </div>
-                  <!-- /.col-xl-4 col-lg-4 col-md-6 -->
-                   <div
-                    class="col-xl-4 col-lg-4 col-md-6 mt-60 wow animated fadeInUp"
-                    data-wow-delay="0.1s"
-                    data-wow-duration="1500ms"
-                  >
-                    <div class="pricing-card">
-                      <div class="pricing-card__image-wrapper">
-                        <div
-                          class="pricing-card__image"
-                          style="
-                            background-image: url('{{ asset('trevlo') }}/assets/images/pricing/slopeng.jpg');
-                          "
-                        ></div>
-                        <!-- /.pricing-card__image-inner-content -->
-                      </div>
-                      <!-- /.pricing-card__image-bg -->
-                      <ul class="pricing-card__list">
-                        <li>
-                          <p class="bjir text-center">Pantai Salopeng</p>
-                        </li>
-                        <li>
-                          <span class='bx bxs-chevron-right'></span>
-                          <p>Rp. 10.000</p>
-                        </li>
-                        <li>
-                          <span class='bx bxs-chevron-right'></span>
-                          <p>Buka Hari Ini</p>
-                        </li>
-                      </ul>
-                      <!-- /.pricing-card__list -->
-                      <div class="pricing-card__btn-box">
-                        <a
-                          href="tour-listing-details-right.html"
-                          class="pricing-card__btn trevlo-btn trevlo-btn--base"
-                          ><span>Book Now</span></a
-                        >
-                      </div>
-                      <!-- /.pricing-card__btn-box -->
-                      <div class="pricing-card__overlay"></div>
-                      <!-- /.pricing-card__overlay -->
-                    </div>
-                    <!-- /.pricing-card -->
-                  </div>
-                  <!-- /.col-xl-4 col-lg-4 col-md-6 -->
-                   <div
-                    class="col-xl-4 col-lg-4 col-md-6 mt-60 wow animated fadeInUp"
-                    data-wow-delay="0.1s"
-                    data-wow-duration="1500ms"
-                  >
-                    <div class="pricing-card">
-                      <div class="pricing-card__image-wrapper">
-                        <div
-                          class="pricing-card__image"
-                          style="
-                            background-image: url('{{ asset('trevlo') }}/assets/images/pricing/gili.jpg');
-                          "
-                        ></div>
-                        <!-- /.pricing-card__image-inner-content -->
-                      </div>
-                      <!-- /.pricing-card__image-bg -->
-                      <ul class="pricing-card__list">
-                        <li>
-                          <p class="bjir text-center">Pulau Gili Labak</p>
-                        </li>
-                        <li>
-                          <span class='bx bxs-chevron-right'></span>
-                          <p>Rp. 25.000</p>
-                        </li>
-                        <li>
-                          <span class='bx bxs-chevron-right'></span>
-                          <p>Buka Hari Ini</p>
-                        </li>
-                      </ul>
-                      <!-- /.pricing-card__list -->
-                      <div class="pricing-card__btn-box">
-                        <a
-                          href="tour-listing-details-right.html"
-                          class="pricing-card__btn trevlo-btn trevlo-btn--base"
-                          ><span>Book Now</span></a
-                        >
-                      </div>
-                      <!-- /.pricing-card__btn-box -->
-                      <div class="pricing-card__overlay"></div>
-                      <!-- /.pricing-card__overlay -->
-                    </div>
-                    <!-- /.pricing-card -->
-                  </div>
-                  <!-- /.col-xl-4 col-lg-4 col-md-6 -->
-                   <div
-                    class="col-xl-4 col-lg-4 col-md-6 mt-60 wow animated fadeInUp"
-                    data-wow-delay="0.1s"
-                    data-wow-duration="1500ms"
-                  >
-                    <div class="pricing-card">
-                      <div class="pricing-card__image-wrapper">
-                        <div
-                          class="pricing-card__image"
-                          style="
-                            background-image: url('{{ asset('trevlo') }}/assets/images/pricing/kashoghi.png');
-                          "
-                        ></div>
-                        <!-- /.pricing-card__image-inner-content -->
-                      </div>
-                      <!-- /.pricing-card__image-bg -->
-                      <ul class="pricing-card__list">
-                        <li>
-                          <p class="bjir text-center">Pantai Kasoghi</p>
-                        </li>
-                        <li>
-                          <span class='bx bxs-chevron-right'></span>
-                          <p>Rp. 10.000</p>
-                        </li>
-                        <li>
-                          <span class='bx bxs-chevron-right'></span>
-                          <p>Buka Hari Ini</p>
-                        </li>
-                      </ul>
-                      <!-- /.pricing-card__list -->
-                      <div class="pricing-card__btn-box">
-                        <a
-                          href="tour-listing-details-right.html"
-                          class="pricing-card__btn trevlo-btn trevlo-btn--base"
-                          ><span>Book Now</span></a
-                        >
-                      </div>
-                      <!-- /.pricing-card__btn-box -->
-                      <div class="pricing-card__overlay"></div>
-                      <!-- /.pricing-card__overlay -->
-                    </div>
-                    <!-- /.pricing-card -->
-                  </div>
-                  <!-- /.col-xl-4 col-lg-4 col-md-6 -->
-                   <div
-                    class="col-xl-4 col-lg-4 col-md-6 mt-60 wow animated fadeInUp"
-                    data-wow-delay="0.1s"
-                    data-wow-duration="1500ms"
-                  >
-                    <div class="pricing-card">
-                      <div class="pricing-card__image-wrapper">
-                        <div
-                          class="pricing-card__image"
-                          style="
-                            background-image: url('{{ asset('trevlo') }}/assets/images/pricing/9.jpeg');
-                          "
-                        ></div>
-                        <!-- /.pricing-card__image-inner-content -->
-                      </div>
-                      <!-- /.pricing-card__image-bg -->
-                      <ul class="pricing-card__list">
-                        <li>
-                          <p class="bjir text-center">Pantai Sembilan</p>
-                        </li>
-                        <li>
-                          <span class='bx bxs-chevron-right'></span>
-                          <p>Rp. 10.000</p>
-                        </li>
-                        <li>
-                          <span class='bx bxs-chevron-right'></span>
-                          <p>Buka Hari Ini</p>
-                        </li>
-                      </ul>
-                      <!-- /.pricing-card__list -->
-                      <div class="pricing-card__btn-box">
-                        <a
-                          href="tour-listing-details-right.html"
-                          class="pricing-card__btn trevlo-btn trevlo-btn--base"
-                          ><span>Book Now</span></a
-                        >
-                      </div>
-                      <!-- /.pricing-card__btn-box -->
-                      <div class="pricing-card__overlay"></div>
-                      <!-- /.pricing-card__overlay -->
-                    </div>
-                    <!-- /.pricing-card -->
-                  </div>
-                  <!-- /.col-xl-4 col-lg-4 col-md-6 -->
+
+                  @endforeach
                 </div>
                 <!-- /.row -->
               </div>
-              <!--Marketing Solution-tab-end-->
-              <!--Business Solution-tab-start-->
-              <!--Business Solution-tab-end-->
-              <!--Business Growth-tab-start-->
-
-              <!--Business Growth-tab-end-->
             </div>
           </div>
           <!-- /.pricing-page__main-tab-box -->
