@@ -127,23 +127,23 @@
   });
 
   document.addEventListener("DOMContentLoaded", function () {
-    var readMoreBtn = document.getElementById("read-more-btn");
-    var moreText = document.querySelectorAll(".more");
+      var readMoreBtns = document.querySelectorAll(".read-more-btn");
 
-    readMoreBtn.addEventListener("click", function () {
-      if (readMoreBtn.innerText === "Read More") {
-        moreText.forEach(function (text) {
-          text.style.display = "block";
-        });
-        readMoreBtn.innerText = "Read Less";
-      } else {
-        moreText.forEach(function (text) {
-          text.style.display = "none";
-        });
-        readMoreBtn.innerText = "Read More";
-      }
-    });
+      readMoreBtns.forEach(function (btn, index) {
+          btn.addEventListener("click", function () {
+              var moreText = btn.parentElement.querySelector(".more");
+
+              if (btn.innerText === "Read More") {
+                  moreText.style.display = "block";
+                  btn.innerText = "Read Less";
+              } else {
+                  moreText.style.display = "none";
+                  btn.innerText = "Read More";
+              }
+          });
+      });
   });
+
 
   document.querySelectorAll(".minus").forEach((button) => {
     button.addEventListener("click", function () {
@@ -159,7 +159,7 @@
       let input = this.previousElementSibling;
       input.value = parseInt(input.value) + 1;
     });
-  }); 
+  });
 
   // // custom coursor
   // if ($(".custom-cursor").length) {

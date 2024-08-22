@@ -2948,6 +2948,25 @@ path {
 .tour-listing-two .tour-listing__card-image {
   border-radius: 20px;
 }
+
+.tour-listing__card-status-box {
+    position: absolute; /* Menyamaikan dengan posisi icon love */
+    top: 10px; /* Sesuaikan dengan kebutuhan */
+    right: 10px; /* Sesuaikan dengan kebutuhan */
+    background-color: #28a745; /* Warna hijau */
+    padding: 3px 8px; /* Ruang di dalam kotak */
+    border-radius: 5px; /* Membulatkan sudut */
+    z-index: 10; /* Pastikan elemen ini berada di atas elemen lainnya */
+}
+
+.tour-listing__card-status {
+    color: white; /* Warna teks putih */
+    font-size: 14px; /* Ukuran font */
+    font-weight: bold; /* Teks tebal */
+}
+
+
+
 .tour-listing-two__card-show-content {
   padding: 133px 30px 25px;
   position: absolute;

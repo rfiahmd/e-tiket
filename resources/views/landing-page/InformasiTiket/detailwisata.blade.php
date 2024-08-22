@@ -9,7 +9,7 @@
                     <div class="tour-listing-details__destination-row row">
                         <div class="col-xl-4 wow animated fadeInLeft" data-wow-delay="0.1s" data-wow-duration="1500ms">
                             <div class="tour-listing-details__destination-left">
-                                <h3 class="tour-listing-details__dastination-title">Pantai Lombang</h3>
+                                <h3 class="tour-listing-details__dastination-title">{{ $wisata->nama_wisata }}</h3>
                                 <h4 class="tour-listing-details__dastination-price"><span>Rp. 10.000</span><span class="tour-listing-details__dastination-person">/ Kepala</span></h4>
                             </div><!-- /.tour-listing-details__daetination-left -->
                         </div><!-- /.col-xl-4 -->
@@ -26,7 +26,7 @@
                                     <span class="icon-location-1"></span>
                                     <div class="tour-listing-details__destination-info-title">
                                         <h4 class="tour-listing-details__destination-info-top">Lokasi</h4>
-                                        <h4 class="tour-listing-details__destination-info-bottom">Batang - Batang, Sumenep</h4>
+                                        <h4 class="tour-listing-details__destination-info-bottom">{{ $wisata->alamat_lengkap }}</h4>
                                     </div>
                                 </div><!-- /.tour-listing-details__destination-info -->
                             </div><!-- /.tour-listing-details__destination-right -->
@@ -41,11 +41,11 @@
                         <div class="tour-listing-details__overview">
                             <div class="wow animated fadeIn" data-wow-delay="0.1s" data-wow-duration="1500ms">
                                 <div class="image_wrapper_detail">
-                                    <img class="image_detail" src="{{ asset('trevlo') }}/assets/images/pricing/lombang.jpeg" alt="">
+                                    <img class="image_detail" src="{{ asset('pictures/wisata/'. $wisata->gambar_wisata) }}" alt="">
                                 </div>
                                 <h3 class="tour-listing-details__title tour-listing-details__overview-title">Deskripsi</h3>
                             </div>
-                            <p class="tour-listing-details__overview-text wow animated fadeInUp" data-wow-delay="0.1s" data-wow-duration="1500ms">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste accusantium facilis optio sit. Beatae voluptatem provident veniam odio ratione dolore natus aliquid blanditiis qui obcaecati iste perspiciatis repellat, voluptates dicta unde repudiandae, sapiente repellendus iure facere rerum doloremque possimus tempore, maiores eius. Accusamus aliquid temporibus, accusantium itaque ea numquam vero.</p>
+                            <p class="tour-listing-details__overview-text wow animated fadeInUp" data-wow-delay="0.1s" data-wow-duration="1500ms">{{ $wisata->deskripsi }}</p>
                         </div><!-- /.tour-listing-details__explore -->
                         <div class="tour-listing-details__included">
                             <h3 class="tour-listing-details__title tour-listing-details__included-title">Fasilitas dan Permainan</h3>
@@ -125,7 +125,7 @@
                                         <input type="text" name="date" placeholder="Pilih Tanggal" id="datepicker" class="tour-listing-details__sidebar-form-date trevlo-datepicker">
                                         <i class="tour-listing-details__sidebar-form-date-arrow fas fa-angle-down"></i>
                                     </div>
-                                    <a href="/paket" class="tour-listing-details__sidebar-btn trevlo-btn trevlo-btn--base"><span>Book
+                                    <a href="/paket/{{ $wisata->wisata_id }}" class="tour-listing-details__sidebar-btn trevlo-btn trevlo-btn--base"><span>Book
                                             Now</span></a>
                                 </form>
                                 <div class="result"></div><!-- /.result -->

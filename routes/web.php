@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\TransaksiController;
@@ -90,13 +91,10 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::get('/', function () {
-    return view('landing-page.landing');
-});
-
-Route::get('/harga', function () {
-    return view('landing-page.InformasiTiket.hargatiket');
-});
+Route::get('/', [LandingController::class, 'index']);
+Route::get('/detail/{id}', [LandingController::class, 'detail']);
+Route::get('/harga', [LandingController::class, 'wisata']);
+Route::get('/paket/{id}', [LandingController::class, 'pilihpkt']);
 
 Route::get('/faq', function () {
     return view('landing-page.InformasiTiket.faq');
@@ -114,13 +112,6 @@ Route::get('/canceltiket', function () {
     return view('landing-page.Pembatalan.bataltiket');
 });
 
-Route::get('/detailwisata', function () {
-    return view('landing-page.InformasiTiket.detailwisata');
-});
-
-Route::get('/paket', function () {
-    return view('landing-page.InformasiTiket.pilihpaket');
-});
 
 Route::get('/konfirmasi', function () {
     return view('landing-page.InformasiTiket.konfirmasitiket');
