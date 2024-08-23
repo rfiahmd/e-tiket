@@ -1,3 +1,8 @@
+@php
+    $title = 'Data Paket';
+    $titleHeader = '<li><strong style="margin: 0 8px;">/</strong>Data Paket </li>';
+@endphp
+
 @extends('layouts.template')
 
 @section('content')

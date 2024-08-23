@@ -1,6 +1,7 @@
-{{-- @php
-    $title = '.. » ..';
-@endphp --}}
+@php
+    $title = 'Profil';
+    $titleHeader = '<li><strong style="margin: 0 8px;">/</strong>Profil </li>';
+@endphp
 
 @extends('layouts.template')
 

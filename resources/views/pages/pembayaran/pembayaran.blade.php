@@ -1,6 +1,7 @@
-{{-- @php
-    $title = '.. » ..';
-@endphp --}}
+@php
+    $title = 'Data Pembayaran';
+    $titleHeader = '<li><strong style="margin: 0 8px;">/</strong>Pembayaran </li>';
+@endphp
 
 @extends('layouts.template')
 

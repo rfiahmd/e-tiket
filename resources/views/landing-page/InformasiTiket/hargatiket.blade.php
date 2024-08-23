@@ -49,10 +49,6 @@
                         </li>
                         <li>
                           <span class='bx bxs-chevron-right'></span>
-                          <p>{{ $item-> }}</p>
-                        </li>
-                        <li>
-                          <span class='bx bxs-chevron-right'></span>
                           <p>Buka Hari Ini</p>
                         </li>
                       </ul>

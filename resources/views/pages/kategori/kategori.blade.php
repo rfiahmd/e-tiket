@@ -1,6 +1,7 @@
-{{-- @php
-    $title = '.. » ..';
-@endphp --}}
+@php
+    $title = 'Data Kategori';
+    $titleHeader = '<li><strong style="margin: 0 8px;">/</strong>Data Kategori</li>';
+@endphp
 
 @extends('layouts.template')
 

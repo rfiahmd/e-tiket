@@ -1,18 +1,19 @@
 <div class="page-header row">
     <div class="header-logo-wrapper col-auto">
-        <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light"
+        <div class="logo-wrapper"><a href="/dashboard/superAdmin"><img class="img-fluid for-light"
                     src="{{ asset('') }}assets/Admin-Mofi/assets/images/logo/logo.png" alt="" /><img
                     class="img-fluid for-dark"
                     src="{{ asset('') }}assets/Admin-Mofi/assets/images/logo/logo_light.png" alt="" /></a>
         </div>
     </div>
     <div class="col-4 col-xl-4 page-title">
-        <h4 class="f-w-700">Default dashboard</h4>
+        <h4 class="f-w-700 mb-1">E-Tiket Wisata Sumenep</h4>
         <nav>
             <ol class="breadcrumb justify-content-sm-start align-items-center mb-0">
-                <li class="breadcrumb-item"><a href="index.html"> <i data-feather="home"> </i></a></li>
-                <li><strong style="margin: 0 8px;">/</strong>Dashboard </li>
-                <li><strong style="margin: 0 8px;">/</strong>Default</li>
+                <li class="breadcrumb-item"><a href="/dashboard/superAdmin"> <i data-feather="home"> </i></a></li>
+                {{-- <li><strong style="margin: 0 8px;">/</strong>Dashboard </li>
+                <li><strong style="margin: 0 8px;">/</strong>Default</li> --}}
+                {!! $titleHeader !!}
             </ol>
         </nav>
     </div>
@@ -33,7 +34,7 @@
                 </div>
             </form>
             <div class="header-logo-wrapper col-auto p-0">
-                <div class="logo-wrapper"><a href="index.html"><img class="img-fluid"
+                <div class="logo-wrapper"><a href="/dashboard/superAdmin"><img class="img-fluid"
                             src="{{ asset('') }}assets/Admin-Mofi/assets/images/logo/logo.png" alt=""></a>
                 </div>
                 <div class="toggle-sidebar">

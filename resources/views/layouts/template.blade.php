@@ -14,7 +14,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{ asset('') }}assets/Admin-Mofi/assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('') }}assets/Admin-Mofi/assets/images/favicon.png" type="image/x-icon">
-    <title>Home » Dashboard</title>
+    <title>{{ $title }}</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
@@ -77,7 +77,7 @@
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
 
         <!-- Page Header -->
-        <x-header></x-header>
+        <x-header :titleHeader="$titleHeader"></x-header>
 
         <!-- Page Body Start-->
         <div class="page-body-wrapper">

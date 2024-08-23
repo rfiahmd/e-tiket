@@ -1,6 +1,12 @@
-{{-- @php
-    $title = '.. » ..';
-@endphp --}}
+@php
+    if (auth()->user()->role === 'Super Admin') {
+        $title = 'Data Wisata';
+        $titleHeader = '<li><strong style="margin: 0 8px;">/</strong>Data Wisata </li>';
+    } elseif (auth()->user()->role === 'Admin') {
+        $title = 'Profil Wisata';
+        $titleHeader = '<li><strong style="margin: 0 8px;">/</strong>Profil Wisata </li>';
+    }
+@endphp
 
 @extends('layouts.template')
 
@@ -177,44 +183,10 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-            <<<<<<< HEAD=======<div class="card-body" style="margin-top: -3rem">
-                <hr>
-                <div class="table-responsive theme-scrollbar">
-                    <table class="display" id="basic-1">
-                        <thead>
-                            <tr>
-                                <th style="width: 30px;">No</th>
-                                <th>Nama</th>
-                                <th>Username</th>
-                                <th>Gmail</th>
-                                <th>Password</th>
-                                <th style="width: 70px; text-align: center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Ach Rofii</td>
-                                <td>arf_</td>
-                                <td>ar002@gmail.com</td>
-                                <td>1234567890</td>
-                                <td>
-                                    <ul class="action d-flex justify-content-center align-items-center mb-0">
-                                        <li class="edit"> <a href=""><i class="icon-pencil-alt"></i></a></li>
-                                        <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-        </div>
-        >>>>>>> 403bd5b799efba86344f08b425ed5810991c96ac
         </div>
     @endif
 
