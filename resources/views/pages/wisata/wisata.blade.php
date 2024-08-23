@@ -177,14 +177,12 @@
                                     </div>
                                 </div>
                             </div>
-                                                                                
+
                         </div>
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-=======
-            <div class="card-body" style="margin-top: -3rem">
+            <<<<<<< HEAD=======<div class="card-body" style="margin-top: -3rem">
                 <hr>
                 <div class="table-responsive theme-scrollbar">
                     <table class="display" id="basic-1">
@@ -207,8 +205,7 @@
                                 <td>1234567890</td>
                                 <td>
                                     <ul class="action d-flex justify-content-center align-items-center mb-0">
-                                        <li class="edit"> <a href=""><i
-                                                    class="icon-pencil-alt"></i></a></li>
+                                        <li class="edit"> <a href=""><i class="icon-pencil-alt"></i></a></li>
                                         <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
                                     </ul>
                                 </td>
@@ -216,8 +213,8 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
->>>>>>> 403bd5b799efba86344f08b425ed5810991c96ac
+        </div>
+        >>>>>>> 403bd5b799efba86344f08b425ed5810991c96ac
         </div>
     @endif
 

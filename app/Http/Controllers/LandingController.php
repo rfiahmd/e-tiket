@@ -25,7 +25,7 @@ class LandingController extends Controller
 
     public function detail($id)
     {
-        $wisata = \App\Models\Wisata::find($id);
+        $wisata = \App\Models\Wisata::with('adminProfiles.user')->find($id);
         $kategori = \App\Models\Kategori::all();
 
         return view('landing-page.InformasiTiket.detailwisata', compact('wisata', 'kategori'));

@@ -49,7 +49,7 @@
                         </li>
                         <li>
                           <span class='bx bxs-chevron-right'></span>
-                          <p>Rp. 15.000</p>
+                          <p>{{ $item-> }}</p>
                         </li>
                         <li>
                           <span class='bx bxs-chevron-right'></span>
