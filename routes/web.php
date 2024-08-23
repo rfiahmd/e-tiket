@@ -46,22 +46,22 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    
+
     Route::middleware(['UserAkses:Super Admin'])->group(function () {
         Route::get('/dashboard/superAdmin', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
         Route::post('/kategori', [KategoriController::class, 'tambah_action']);
         Route::post('/kategori/{id}/edit', [KategoriController::class, 'edit_action']);
         Route::get('/kategori/{id}/hapus', [KategoriController::class, 'hapus_action']);
-        
+
         Route::get('/operator_admin', [AuthController::class, 'operator_admin'])->name('operator.admin');
-        
+
         Route::get('/wisata', [WisataController::class, 'index'])->name('wisata');
         Route::get('/wisata_tambah', [WisataController::class, 'wisata_tambah'])->name('wisata_tambah');
         Route::get('/wisata_edit', [WisataController::class, 'wisata_edit'])->name('wisata_edit');
         Route::post('/upload', [WisataController::class, 'upload'])->name('ckeditor.upload');
     });
-    
+
     Route::middleware(['UserAkses:Admin'])->group(function () {
         Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
         Route::get('/paket_wisata', [PaketController::class, 'index'])->name('paket_wisata');
@@ -71,10 +71,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/paket_edit/{id}', [PaketController::class, 'edit_action']);
         Route::get('/paket/{id}/hapus', [PaketController::class, 'hapus_action']);
         Route::post('/uploadpkt', [PaketController::class, 'uploadpkt'])->name('ckeditor.uploadpkt');
-        
+
         Route::get('/operator_karyawan', [AuthController::class, 'operator_karyawan'])->name('operator.karyawan');
     });
-    
+
     Route::middleware(['UserAkses:Karyawan'])->group(function () {
         Route::get('/dashboard/karyawan', [DashboardController::class, 'karyawan'])->name('dashboard.karyawan');
         Route::get('/wisata', [WisataController::class, 'index'])->name('wisata');
@@ -94,7 +94,8 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/detail/{id}', [LandingController::class, 'detail']);
 Route::get('/harga', [LandingController::class, 'wisata']);
-Route::get('/paket/{id}', [LandingController::class, 'pilihpkt']);
+Route::get('/paket/{id}', [LandingController::class, 'pilihpkt'])->name('step1');
+Route::post('/paket/{id}', [LandingController::class, 'orderstep1']);
 
 Route::get('/faq', function () {
     return view('landing-page.InformasiTiket.faq');

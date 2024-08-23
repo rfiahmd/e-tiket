@@ -120,10 +120,11 @@
                                         class="tour-listing-details__sidebar-form-date trevlo-datepicker">
                                     <i class="tour-listing-details__sidebar-form-date-arrow fas fa-angle-down"></i>
                                 </div>
-                                <a href="/paket/{{ $wisata->wisata_id }}"
+                                <button type="submit" id="special-button"
+                                        data-url="{{ route('step1', $wisata->wisata_id) }}"
                                     class="tour-listing-details__sidebar-btn trevlo-btn trevlo-btn--base">
                                     <span>Book Now</span>
-                                </a>
+                                </button>
                             </form>
                             <div class="result"></div><!-- /.result -->
                         </div>

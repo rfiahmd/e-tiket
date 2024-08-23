@@ -98,36 +98,93 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    const buyButton = document.getElementById("buy-button");
-    const counterContainer = document.getElementById("counter-container");
-    const decreaseButton = document.getElementById("decrease");
-    const increaseButton = document.getElementById("increase");
-    const ticketCount = document.getElementById("ticket-count");
+      const buyButtons = document.querySelectorAll(".buy-button");
+      const counterContainers = document.querySelectorAll(".counter-container");
+      const decreaseButtons = document.querySelectorAll("#decrease");
+      const increaseButtons = document.querySelectorAll("#increase");
+      const ticketCounts = document.querySelectorAll(".ticket-count");
+      const totalPembayaranElement =
+          document.getElementById("total-pembayaran");
 
-    buyButton.addEventListener("click", function () {
-      buyButton.style.display = "none";
-      counterContainer.style.display = "flex";
-    });
-
-    decreaseButton.addEventListener("click", function () {
-      let count = parseInt(ticketCount.value);
-      if (count > 0) {
-        ticketCount.value = count - 1;
-        if (ticketCount.value == 0) {
-          buyButton.style.display = "inline-block";
-          counterContainer.style.display = "none";
-        }
+      // Fungsi untuk memperbarui total pembayaran
+      function updateTotalPembayaran() {
+          let total = 0;
+          ticketCounts.forEach((ticketCount, index) => {
+              const hargaPaket = parseInt(
+                  document.querySelectorAll(".harga-paket")[index].dataset.harga
+              );
+              total += parseInt(ticketCount.value) * hargaPaket;
+          });
+          totalPembayaranElement.textContent = total.toLocaleString("id-ID");
       }
-    });
 
-    increaseButton.addEventListener("click", function () {
-      let count = parseInt(ticketCount.value);
-      ticketCount.value = count + 1;
-    });
+      buyButtons.forEach((buyButton, index) => {
+          const counterContainer = counterContainers[index];
+          const decreaseButton = decreaseButtons[index];
+          const increaseButton = increaseButtons[index];
+          const ticketCount = ticketCounts[index];
+
+          buyButton.addEventListener("click", function (event) {
+              event.preventDefault();
+              buyButton.style.display = "none";
+              counterContainer.style.display = "flex";
+          });
+
+          decreaseButton.addEventListener("click", function (event) {
+              event.preventDefault();
+              let count = parseInt(ticketCount.value);
+              if (count > 0) {
+                  ticketCount.value = count - 1;
+                  if (ticketCount.value == 0) {
+                      buyButton.style.display = "inline-block";
+                      counterContainer.style.display = "none";
+                  }
+                  updateTotalPembayaran(); // Perbarui total pembayaran
+              }
+          });
+
+          increaseButton.addEventListener("click", function (event) {
+              event.preventDefault();
+              let count = parseInt(ticketCount.value);
+              ticketCount.value = count + 1;
+              updateTotalPembayaran(); // Perbarui total pembayaran
+          });
+      });
+
+      // Fungsi untuk tombol Read More
+      const readMoreBtns = document.querySelectorAll(".read-more-btn");
+
+      readMoreBtns.forEach(function (btn, index) {
+          btn.addEventListener("click", function () {
+              var moreText = btn.parentElement.querySelector(".more");
+
+              if (btn.innerText === "Read More") {
+                  moreText.style.display = "block";
+                  btn.innerText = "Read Less";
+              } else {
+                  moreText.style.display = "none";
+                  btn.innerText = "Read More";
+              }
+          });
+      });
   });
 
+
+
+
+
+
   document.addEventListener("DOMContentLoaded", function () {
+    const specialButton = document.getElementById("special-button");
       var readMoreBtns = document.querySelectorAll(".read-more-btn");
+
+      if (specialButton) {
+          specialButton.addEventListener("click", function () {
+              const url = specialButton.getAttribute("data-url");
+              // Mengarahkan pengguna ke route Laravel
+              window.location.href = url;
+          });
+      }
 
       readMoreBtns.forEach(function (btn, index) {
           btn.addEventListener("click", function () {

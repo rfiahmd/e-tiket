@@ -22,16 +22,16 @@
                             </div>
                             <div class="card-body">
                                 <div class="ticket-type">
-                                    <h3>Tiket untuk Rabu, 14 Agustus 2024:</h3>
+                                    <h3>Tiket untuk {{ $formattedDate }}</h3>
                                     <div class="ticket-info">
                                         <p>Syarat & ketentuan</p>
                                         <div class="more">
                                             <p>{!! $item->deskripsi !!}</p>
                                         </div>
-                                        <button class="read-more-btn">
+                                        <button type="button" class="read-more-btn">
                                             Read More
                                         </button><br />
-                                        <span>14 Agt '24, 05:00-23:00 WIB</span>
+                                        <span>{{ \Carbon\Carbon::parse($wisata->waktu_buka)->format('H:i') }} - {{ \Carbon\Carbon::parse($wisata->waktu_tutup)->format('H:i') }}</span>
                                     </div>
                                     <div class="card-footer">
                                         <h3 class="total">Rp. {{ number_format($item->harga_paket, 0, ',', '.') }}</h3>
@@ -40,7 +40,7 @@
                                         </button>
                                         <div class="counter-container" id="counter-container">
                                             <button class="counter-button" id="decrease">-</button>
-                                            <input type="number" id="ticket-count" value="0" min="0" />
+                                            <input type="number" class="ticket-count" name="tiket-count" id="ticket-count" value="0" min="0" readonly />
                                             <button class="counter-button" id="increase">+</button>
                                         </div>
                                     </div>
