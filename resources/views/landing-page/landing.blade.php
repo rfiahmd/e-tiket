@@ -288,7 +288,6 @@
                                 <div class="tour-listing-two__card-hover-content tour-listing__card-content">
                                     <h3 class="tour-listing__card-title"><a
                                             href="/detail/{{ $item->wisata_id }}">{{ $item->nama_wisata }}</a></h3>
-                                    <p class="tour-listing__card-text text-small">{!! $item->deskripsi !!}</p>
                                     <div class="tour-listing-two__card-info">
                                         <div>
                                             <div class="tour-listing__card-location-box">

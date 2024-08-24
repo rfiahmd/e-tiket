@@ -43,7 +43,7 @@ class LandingController extends Controller
         return redirect()->route('step1', ['wisata_id' => $validated['wisata']]);
     }
 
-     public function pilihpkt($id)
+     public function pilihpkt(Request $request, $id)
     {
         $datastep1 = session('step1');
         if (!$datastep1) {
@@ -62,5 +62,10 @@ class LandingController extends Controller
 
 
         return view('landing-page.InformasiTiket.pilihpaket', compact('paket', 'wisata', 'datastep1', 'formattedDate'));
+    }
+
+    public function test(Request $request)
+    {
+        dd($request->all());
     }
 }

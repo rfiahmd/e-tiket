@@ -110,22 +110,7 @@
                         <div class="tour-listing-details__sidebar-book-tours tour-listing-details__sidebar-single wow animated fadeInUp"
                             data-wow-delay="0.1s" data-wow-duration="1500ms">
                             <h3 class="tour-listing-details__sidebar-title">Book Tours</h3>
-                            <form action="" class="tour-listing-details__sidebar-form contact-form-validated">
-                                <div class="tour-listing-details__sidebar-form-input">
-                                    <input type="text" disabled value="{{ $wisata->nama_wisata }}">
-                                    <input type="hidden" name="wisata" value="{{ $wisata->wisata_id }}">
-                                </div>
-                                <div class="tour-listing-details__sidebar-form-input">
-                                    <input type="text" name="date" placeholder="Pilih Tanggal" id="datepicker"
-                                        class="tour-listing-details__sidebar-form-date trevlo-datepicker">
-                                    <i class="tour-listing-details__sidebar-form-date-arrow fas fa-angle-down"></i>
-                                </div>
-                                <button type="submit" id="special-button"
-                                        data-url="{{ route('step1', $wisata->wisata_id) }}"
-                                    class="tour-listing-details__sidebar-btn trevlo-btn trevlo-btn--base">
-                                    <span>Book Now</span>
-                                </button>
-                            </form>
+                            <a href="/paket/{{ $wisata->wisata_id }}">Pesan Sekarang</a>
                             <div class="result"></div><!-- /.result -->
                         </div>
                     </aside><!-- /.tour-listing-details__sidebar -->

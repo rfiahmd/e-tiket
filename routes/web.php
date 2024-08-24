@@ -95,7 +95,8 @@ Route::get('/', [LandingController::class, 'index']);
 Route::get('/detail/{id}', [LandingController::class, 'detail']);
 Route::get('/harga', [LandingController::class, 'wisata']);
 Route::get('/paket/{id}', [LandingController::class, 'pilihpkt'])->name('step1');
-Route::post('/paket/{id}', [LandingController::class, 'orderstep1']);
+Route::post('/paket/{id}', [LandingController::class, 'test'])->name('test');
+route::post('/order-step1', [LandingController::class, 'orderStep1'])->name('orderStep1');
 
 Route::get('/faq', function () {
     return view('landing-page.InformasiTiket.faq');

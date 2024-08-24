@@ -54,6 +54,9 @@
               <hr />
               <h3>Informasi Pembeli</h3>
               <form class="order-form">
+                <label for="tanggal">Tanggal Pesanan:</label>
+                <input type="date" class="form-control" id="tanggal" name="tanggal" required />
+
                 <label for="name">Nama Pemesan:</label>
                 <input type="text" id="name" name="name" required />
 

@@ -13,7 +13,8 @@
                 <!-- /.sec-title__title -->
             </div>
             <div class="card">
-                <form action="" method="POST">
+                <form action="{{ route('test', $wisata->wisata_id) }}" method="POST">
+                    @csrf
                     @foreach ($paket as $item)
                         <h2>Pilihan Paket untuk {{ $wisata->nama_wisata }}</h2>
                         <div class="card mt-4">
@@ -34,28 +35,25 @@
                                         <span>{{ \Carbon\Carbon::parse($wisata->waktu_buka)->format('H:i') }} - {{ \Carbon\Carbon::parse($wisata->waktu_tutup)->format('H:i') }}</span>
                                     </div>
                                     <div class="card-footer">
-                                        <h3 class="total">Rp. {{ number_format($item->harga_paket, 0, ',', '.') }}</h3>
+                                        <h3 class="total">Rp. <span id="harga">{{ number_format($item->harga_paket, 0, ',', '.') }}</span></h3>
                                         <button class="buy-button" id="buy-button">
                                             Beli Tiket
                                         </button>
                                         <div class="counter-container" id="counter-container">
-                                            <button class="counter-button" id="decrease">-</button>
-                                            <input type="number" class="ticket-count" name="tiket-count" id="ticket-count" value="0" min="0" readonly />
-                                            <button class="counter-button" id="increase">+</button>
+                                            <button type="button" class="counter-button" id="decrease">-</button>
+                                            <input type="number" class="ticket-count" name="tiket_count[]" id="ticket-count" value="0" min="0" readonly />
+                                            <button type="button" class="counter-button" id="increase">+</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-                    <div class="total_pembayaran d-flex">
-                        <h3 class="mt-2">Total Rp. 0</h3>
-                        <button type="submit" class="buy-button ms-lg-auto">Selanjutnya</button>
-                    </div>
                 </form>
             </div>
         </div>
         <!-- /.container -->
     </section>
     <!-- Pricing Page End -->
+
 @endsection
