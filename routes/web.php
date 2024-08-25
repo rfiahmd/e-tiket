@@ -92,11 +92,18 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/', [LandingController::class, 'index']);
-Route::get('/detail/{id}', [LandingController::class, 'detail']);
 Route::get('/harga', [LandingController::class, 'wisata']);
+
+Route::get('/detail/{id}', [LandingController::class, 'detail']);
+// step1
 Route::get('/paket/{id}', [LandingController::class, 'pilihpkt'])->name('step1');
-Route::post('/paket/{id}', [LandingController::class, 'test'])->name('test');
-route::post('/order-step1', [LandingController::class, 'orderStep1'])->name('orderStep1');
+// step2
+Route::get('/konfirmasi/{id}', [LandingController::class, 'konfirmasi'])->name('step2');
+Route::post('/konfirmasi/{id}', [LandingController::class, 'step2_action'])->name('step2.post');
+
+// Route untuk halaman sukses
+Route::get('/detailtiket', [LandingController::class, 'successPage'])->name('successPage');
+
 
 Route::get('/faq', function () {
     return view('landing-page.InformasiTiket.faq');
@@ -115,10 +122,3 @@ Route::get('/canceltiket', function () {
 });
 
 
-Route::get('/konfirmasi', function () {
-    return view('landing-page.InformasiTiket.konfirmasitiket');
-});
-
-Route::get('/detailtiket', function () {
-    return view('landing-page.CekTiket.detail');
-});

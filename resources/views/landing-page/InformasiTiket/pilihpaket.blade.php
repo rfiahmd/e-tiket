@@ -13,17 +13,16 @@
                 <!-- /.sec-title__title -->
             </div>
             <div class="card">
-                <form action="{{ route('test', $wisata->wisata_id) }}" method="POST">
+                <form action="{{ route('step2', $wisata->wisata_id) }}" method="GET">
                     @csrf
+                    <h2>Pilihan Paket untuk {{ $wisata->nama_wisata }}</h2>
                     @foreach ($paket as $item)
-                        <h2>Pilihan Paket untuk {{ $wisata->nama_wisata }}</h2>
                         <div class="card mt-4">
                             <div class="card-header">
                                 <h2>{{ $item->nama_paket }}</h2>
                             </div>
                             <div class="card-body">
                                 <div class="ticket-type">
-                                    <h3>Tiket untuk {{ $formattedDate }}</h3>
                                     <div class="ticket-info">
                                         <p>Syarat & ketentuan</p>
                                         <div class="more">
@@ -43,17 +42,18 @@
                                             <button type="button" class="counter-button" id="decrease">-</button>
                                             <input type="number" class="ticket-count" name="tiket_count[]" id="ticket-count" value="0" min="0" readonly />
                                             <button type="button" class="counter-button" id="increase">+</button>
+                                            <input type="hidden" name="id_pkt[]" value="{{ $item->paket_id }}">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
+                    <button type="submit" class="btn btn-primary">Selanjutnya</button>
                 </form>
             </div>
         </div>
         <!-- /.container -->
     </section>
     <!-- Pricing Page End -->
-
 @endsection

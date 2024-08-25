@@ -13,7 +13,7 @@ class CreatePembayaranTable extends Migration
             $table->foreignId('id_transaksi')->constrained('transaksi', 'transaksi_id')->onDelete('cascade');
             $table->decimal('jumlah_pembayaran', 10, 0);
             $table->string('metode_pembayaran');
-            $table->enum('status_pembayaran', ['Sukses', 'Proses', 'Batal']);
+            $table->enum('status_pembayaran', ['Sukses', 'Batal']);
             $table->string('bukti_pembayaran')->nullable();
             $table->timestamps();
         });

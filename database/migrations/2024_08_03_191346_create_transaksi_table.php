@@ -17,7 +17,8 @@ class CreateTransaksiTable extends Migration
             $table->foreignId('id_paket')->constrained('paket_wisata', 'paket_id')->onDelete('cascade');
             $table->integer('jumlah_paket');
             $table->decimal('total_harga', 10, 0);
-            $table->enum('status_transaksi', ['Sukses', 'Proses', 'Batal']);
+            $table->date('tanggal_pesanan');
+            $table->enum('status_transaksi', ['Sukses','Proses', 'Batal'])->default('Proses');
             $table->string('qr_kode')->nullable();
             $table->string('sual_token')->nullable();
             $table->foreignId('id_user')->constrained('users', 'id')->onDelete('cascade');

@@ -2,70 +2,70 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailTransaksi;
 use Illuminate\Http\Request;
 use App\Models\PaketWisata;
 use App\Models\Wisata;
 use App\Models\Kategori;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class LandingController extends Controller
 {
     public function index()
     {
-        $wisata = \App\Models\Wisata::all();
+        $wisata = Wisata::all();
 
         return view('landing-page.landing', compact('wisata'));
     }
 
     public function wisata()
     {
-        $wisata = \App\Models\Wisata::all();
+        $wisata = Wisata::all();
 
         return view('landing-page.InformasiTiket.hargatiket', compact('wisata'));
     }
 
     public function detail($id)
     {
-        $wisata = \App\Models\Wisata::find($id);
-        $kategori = \App\Models\Kategori::all();
+        $wisata = Wisata::find($id);
+        $kategori = Kategori::all();
 
         return view('landing-page.InformasiTiket.detailwisata', compact('wisata', 'kategori'));
     }
 
-    public function orderStep1(Request $request){
-        $validated = $request -> validate([
-          'wisata' => 'required',
-          'date' => 'required|date',
-        ]);
+    public function pilihpkt(Request $request, $id)
+    {
+        $wisata = Wisata::find($id);
+        $paket = PaketWisata::where('id_wisata', $id)->get();
 
-        $request->session()->put('step1', $validated);
-
-        return redirect()->route('step1', ['wisata_id' => $validated['wisata']]);
+        return view('landing-page.InformasiTiket.pilihpaket', compact('paket', 'wisata'));
     }
 
-     public function pilihpkt(Request $request, $id)
+    // Menampilkan konfirmasi pemesanan
+    public function konfirmasi(Request $request, $id)
     {
-        $datastep1 = session('step1');
-        if (!$datastep1) {
-            $datastep1 = [
-                'wisata' => '$id',
-                'date' => 'tanggal kosong',
-            ];
+        $wisata = Wisata::find($id);
+        // Mendapatkan array ID paket dan jumlah tiket dari request
+        $paketIds = $request->input('id_pkt', []);
+        $tiketCounts = $request->input('tiket_count', []);
+        
+        // Mengambil data paket berdasarkan ID paket
+        $pakets = PaketWisata::whereIn('paket_id', $paketIds)->get();
+
+        // Menghitung total harga untuk setiap paket
+        $totalHarga = [];
+        foreach ($pakets as $paket) {
+            $index = array_search($paket->paket_id, $paketIds);
+            $count = $tiketCounts[$index] ?? 0;
+            $totalHarga[$paket->paket_id] = $paket->harga_paket * $count;
         }
 
-        $formattedDate = Carbon::parse($datastep1['date'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY');
-
-        // Dapatkan wisata berdasarkan ID
-        $wisata = \App\Models\Wisata::find($datastep1['wisata']);
-        // Dapatkan paket yang terkait dengan wisata tersebut
-        $paket = \App\Models\PaketWisata::where('id_wisata', $datastep1['wisata'])->get();
-
-
-        return view('landing-page.InformasiTiket.pilihpaket', compact('paket', 'wisata', 'datastep1', 'formattedDate'));
+        return view('landing-page.InformasiTiket.konfirmasitiket', compact('wisata','pakets', 'id', 'tiketCounts', 'totalHarga', 'paketIds'));
     }
 
-    public function test(Request $request)
-    {
-        dd($request->all());
-    }
+    // public function test(Request $request)
+    // {
+    //     dd($request->all());
+    // }
 }
